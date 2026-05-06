@@ -140,14 +140,29 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\FormCriarEditarCompraPlaneada.resx">
+      <DependentUpon>FormCriarEditarCompraPlaneada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FormCriarUtilizador.resx">
       <DependentUpon>FormCriarUtilizador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormGestaoArtigos.resx">
+      <DependentUpon>FormGestaoArtigos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormGestaoOrcamentos.resx">
+      <DependentUpon>FormGestaoOrcamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormGestaoTiposArtigo.resx">
       <DependentUpon>FormGestaoTiposArtigo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormModoCompra.resx">
+      <DependentUpon>FormModoCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormPlaneamentoCompras.resx">
+      <DependentUpon>FormPlaneamentoCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
