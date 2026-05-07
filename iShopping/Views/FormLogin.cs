@@ -1,47 +1,48 @@
-﻿using iShopping.Model;
+﻿using iShopping.Controller;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormLogin: Form
+    public partial class FormLogin : Form
     {
         public FormLogin()
         {
             InitializeComponent();
         }
 
+        // Lógica ligada ao botão "Login" da interface
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            string username = textBoxUsername.Text;
-            string password = textBoxPassword.Text;
+            var controller = new UtilizadorController();
 
-            if (username == "abc" && password == "123")
+            bool loginSucesso = controller.EfetuarLogin(textBoxUsername.Text, textBoxPassword.Text);
+
+            if (loginSucesso)
             {
-                FormPrincipal formPrincipal = new FormPrincipal();
-                formPrincipal.Show();
 
+                // Abre a página principal
+                FormPrincipal main = new FormPrincipal();
+                main.Show();
+
+                // Esconde a janela de login
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Username ou palavra-passe incorretos.");
+                MessageBox.Show("Username ou Password incorretos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void buttonRegistarUtilizador_Click(object sender, EventArgs e)
+        // Lógica ligada ao botão "Registar Utilizador" da interface de Login
+
+        private void buttonRegistarUtilizador_Click_1(object sender, EventArgs e)
         {
-            FormCriarUtilizador form = new FormCriarUtilizador();
-            //Pus ShowDialog para não deixar mexer noutras páginas
-            //enquanto a página Criar Utilizador estiver aberta
-            form.ShowDialog();
-        }         
+            // AQUI APENAS ABRIMOS A NOVA JANELA!
+            FormCriarUtilizador formRegisto = new FormCriarUtilizador();
+            formRegisto.ShowDialog();
+        }
+
+        
     }
 }

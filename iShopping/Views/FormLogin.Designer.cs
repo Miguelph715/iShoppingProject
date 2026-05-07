@@ -89,9 +89,9 @@
             this.buttonRegistarUtilizador.Name = "buttonRegistarUtilizador";
             this.buttonRegistarUtilizador.Size = new System.Drawing.Size(167, 32);
             this.buttonRegistarUtilizador.TabIndex = 5;
-            this.buttonRegistarUtilizador.Text = "Registar Utilizador";
+            this.buttonRegistarUtilizador.Text = "Criar Utilizador";
             this.buttonRegistarUtilizador.UseVisualStyleBackColor = true;
-            this.buttonRegistarUtilizador.Click += new System.EventHandler(this.buttonRegistarUtilizador_Click);
+            this.buttonRegistarUtilizador.Click += new System.EventHandler(this.buttonRegistarUtilizador_Click_1);
             // 
             // groupBox1
             // 

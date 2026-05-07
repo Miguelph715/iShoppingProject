@@ -19,6 +19,14 @@ namespace iShopping.Model
         public DbSet<Orcamento> Orcamentos { get; set; }
         public DbSet<Compra> Compras { get; set; }
         public DbSet<ItemCompra> ItensCompra { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Desligar o Cascade Delete para resolver o erro do SQL Server
+            modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.OneToManyCascadeDeleteConvention>();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 
 }

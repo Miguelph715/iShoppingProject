@@ -34,5 +34,7 @@ namespace iShopping
             FormModoCompra form = new FormModoCompra();
             form.Show();
         }
+
+        
     }
 }
