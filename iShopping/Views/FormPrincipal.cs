@@ -35,6 +35,10 @@ namespace iShopping
             form.Show();
         }
 
-        
+        private void estatísticasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEstatisticas formEstatisticas = new FormEstatisticas();
+            formEstatisticas.Show();
+        }
     }
 }

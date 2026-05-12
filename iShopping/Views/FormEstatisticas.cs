@@ -15,6 +15,9 @@ namespace iShopping.Views
         public FormEstatisticas()
         {
             InitializeComponent();
-        }
+
+            tabPage1.Text = "Estatísticas";
+            tabPage2.Text = "Sugestões";
+        }        
     }
 }

@@ -146,6 +146,9 @@
     <EmbeddedResource Include="Views\FormCriarUtilizador.resx">
       <DependentUpon>FormCriarUtilizador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormEstatisticas.resx">
+      <DependentUpon>FormEstatisticas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FormGestaoArtigos.resx">
       <DependentUpon>FormGestaoArtigos.cs</DependentUpon>
     </EmbeddedResource>
