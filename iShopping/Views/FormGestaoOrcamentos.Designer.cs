@@ -80,6 +80,7 @@
             this.buttonAdicionarOrcamento.TabIndex = 16;
             this.buttonAdicionarOrcamento.Text = "Adicionar";
             this.buttonAdicionarOrcamento.UseVisualStyleBackColor = true;
+            this.buttonAdicionarOrcamento.Click += new System.EventHandler(this.buttonAdicionarOrcamento_Click);
             // 
             // buttonEditarOrcamento
             // 

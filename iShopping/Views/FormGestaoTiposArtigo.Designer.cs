@@ -41,19 +41,17 @@
             // labelTituloTipoArtigo
             // 
             this.labelTituloTipoArtigo.AutoSize = true;
-            this.labelTituloTipoArtigo.Location = new System.Drawing.Point(32, 30);
-            this.labelTituloTipoArtigo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTituloTipoArtigo.Location = new System.Drawing.Point(48, 46);
             this.labelTituloTipoArtigo.Name = "labelTituloTipoArtigo";
-            this.labelTituloTipoArtigo.Size = new System.Drawing.Size(83, 13);
+            this.labelTituloTipoArtigo.Size = new System.Drawing.Size(123, 20);
             this.labelTituloTipoArtigo.TabIndex = 0;
             this.labelTituloTipoArtigo.Text = "Nome do Artigo:";
             // 
             // buttonAdicionar
             // 
-            this.buttonAdicionar.Location = new System.Drawing.Point(35, 232);
-            this.buttonAdicionar.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAdicionar.Location = new System.Drawing.Point(52, 357);
             this.buttonAdicionar.Name = "buttonAdicionar";
-            this.buttonAdicionar.Size = new System.Drawing.Size(69, 22);
+            this.buttonAdicionar.Size = new System.Drawing.Size(104, 34);
             this.buttonAdicionar.TabIndex = 1;
             this.buttonAdicionar.Text = "Adicionar";
             this.buttonAdicionar.UseVisualStyleBackColor = true;
@@ -61,10 +59,9 @@
             // 
             // buttonEditar
             // 
-            this.buttonEditar.Location = new System.Drawing.Point(131, 232);
-            this.buttonEditar.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonEditar.Location = new System.Drawing.Point(196, 357);
             this.buttonEditar.Name = "buttonEditar";
-            this.buttonEditar.Size = new System.Drawing.Size(56, 22);
+            this.buttonEditar.Size = new System.Drawing.Size(84, 34);
             this.buttonEditar.TabIndex = 2;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
@@ -72,10 +69,9 @@
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(215, 232);
-            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonEliminar.Location = new System.Drawing.Point(322, 357);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(68, 22);
+            this.buttonEliminar.Size = new System.Drawing.Size(102, 34);
             this.buttonEliminar.TabIndex = 3;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
@@ -83,10 +79,9 @@
             // 
             // buttonLimpar
             // 
-            this.buttonLimpar.Location = new System.Drawing.Point(311, 232);
-            this.buttonLimpar.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLimpar.Location = new System.Drawing.Point(466, 357);
             this.buttonLimpar.Name = "buttonLimpar";
-            this.buttonLimpar.Size = new System.Drawing.Size(61, 22);
+            this.buttonLimpar.Size = new System.Drawing.Size(92, 34);
             this.buttonLimpar.TabIndex = 4;
             this.buttonLimpar.Text = "Limpar";
             this.buttonLimpar.UseVisualStyleBackColor = true;
@@ -95,36 +90,34 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 58);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(48, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(119, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Tipos de Artigo:";
             // 
             // textBoxNomeArtigo
             // 
-            this.textBoxNomeArtigo.Location = new System.Drawing.Point(131, 30);
-            this.textBoxNomeArtigo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxNomeArtigo.Location = new System.Drawing.Point(196, 46);
             this.textBoxNomeArtigo.Name = "textBoxNomeArtigo";
-            this.textBoxNomeArtigo.Size = new System.Drawing.Size(87, 20);
+            this.textBoxNomeArtigo.Size = new System.Drawing.Size(128, 26);
             this.textBoxNomeArtigo.TabIndex = 6;
             // 
             // listBoxTiposArtigos
             // 
             this.listBoxTiposArtigos.FormattingEnabled = true;
-            this.listBoxTiposArtigos.Location = new System.Drawing.Point(35, 82);
-            this.listBoxTiposArtigos.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxTiposArtigos.ItemHeight = 20;
+            this.listBoxTiposArtigos.Location = new System.Drawing.Point(52, 126);
             this.listBoxTiposArtigos.Name = "listBoxTiposArtigos";
-            this.listBoxTiposArtigos.Size = new System.Drawing.Size(111, 82);
+            this.listBoxTiposArtigos.Size = new System.Drawing.Size(228, 204);
             this.listBoxTiposArtigos.TabIndex = 7;
             this.listBoxTiposArtigos.SelectedIndexChanged += new System.EventHandler(this.listBoxTiposArtigos_SelectedIndexChanged);
             // 
             // FormGestaoTiposArtigo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(800, 449);
             this.Controls.Add(this.listBoxTiposArtigos);
             this.Controls.Add(this.textBoxNomeArtigo);
             this.Controls.Add(this.label1);
@@ -133,7 +126,6 @@
             this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonAdicionar);
             this.Controls.Add(this.labelTituloTipoArtigo);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormGestaoTiposArtigo";
             this.Text = "FormGestaoTiposArtigo";
             this.Load += new System.EventHandler(this.FormGestaoTiposArtigo_Load);

@@ -43,7 +43,8 @@ namespace iShopping.Views
         {
             if (string.IsNullOrWhiteSpace(textBoxNomeArtigo.Text))
             {
-                MessageBox.Show("Por favor, insira um nome para o Tipo de Artigo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, insira um nome para o Tipo de Artigo.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -56,7 +57,8 @@ namespace iShopping.Views
             // Enviar para o controller guardar
             controller.Adicionar(novoTipo);
 
-            MessageBox.Show("Tipo de Artigo adicionado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Tipo de Artigo adicionado com sucesso!", "Sucesso", MessageBoxButtons.OK, 
+                MessageBoxIcon.Information);
 
             LimparCampos();
             AtualizarLista();
@@ -76,7 +78,8 @@ namespace iShopping.Views
         {
             if (string.IsNullOrWhiteSpace(textBoxNomeArtigo.Text))
             {
-                MessageBox.Show("O nome não pode estar vazio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("O nome não pode estar vazio.", "Aviso", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Warning);
                 return;
             }
 
@@ -88,14 +91,16 @@ namespace iShopping.Views
                 // Pede ao controller para atualizar na BD
                 controller.Atualizar(tipoSelecionado);
 
-                MessageBox.Show("Tipo de Artigo atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tipo de Artigo atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information);
 
                 LimparCampos();
                 AtualizarLista();
             }
             else
             {
-                MessageBox.Show("Por favor, selecione um Tipo de Artigo na lista para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, selecione um Tipo de Artigo na lista para editar.", "Aviso", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -104,7 +109,9 @@ namespace iShopping.Views
             if (listBoxTiposArtigos.SelectedItem is TipoArtigo tipoSelecionado)
             {
                 // Confirmar antes de eliminar
-                DialogResult resposta = MessageBox.Show($"Tem a certeza que deseja eliminar o tipo '{tipoSelecionado.Nome}'?", "Confirmar Eliminação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult resposta = MessageBox.Show($"Tem a certeza que deseja eliminar o tipo " +
+                    $"'{tipoSelecionado.Nome}'?", "Confirmar Eliminação", MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question);
 
                 if (resposta == DialogResult.Yes)
                 {
@@ -117,7 +124,8 @@ namespace iShopping.Views
             }
             else
             {
-                MessageBox.Show("Por favor, selecione um Tipo de Artigo na lista para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, selecione um Tipo de Artigo na lista para eliminar.", "Aviso", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
