@@ -29,22 +29,30 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.geralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilizadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.artigosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeArtigosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artigosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeArtigosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.artigosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.planeamentoDeComprasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.modoCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estatísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelTítulo = new System.Windows.Forms.Label();
             this.labelUtilizador = new System.Windows.Forms.Label();
             this.labelComprasAbertas = new System.Windows.Forms.Label();
             this.listBoxComprasAbertas = new System.Windows.Forms.ListBox();
             this.buttonAbrirModoCompra = new System.Windows.Forms.Button();
+            this.groupBoxAcessosRapidos = new System.Windows.Forms.GroupBox();
+            this.buttonOrcamentos = new System.Windows.Forms.Button();
+            this.buttonArtigos = new System.Windows.Forms.Button();
+            this.buttonModoCompra = new System.Windows.Forms.Button();
+            this.buttonPlaneamento = new System.Windows.Forms.Button();
+            this.tipoDeArtigosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.groupBoxAcessosRapidos.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -52,9 +60,9 @@
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.utilizadoresToolStripMenuItem,
+            this.sairToolStripMenuItem,
+            this.geralToolStripMenuItem,
             this.tiposDeArtigosToolStripMenuItem,
-            this.artigosToolStripMenuItem,
             this.estatísticasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -62,11 +70,36 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(57, 29);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
+            // geralToolStripMenuItem
+            // 
+            this.geralToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.utilizadoresToolStripMenuItem,
+            this.artigosToolStripMenuItem,
+            this.tipoDeArtigosToolStripMenuItem,
+            this.orçamentosToolStripMenuItem});
+            this.geralToolStripMenuItem.Name = "geralToolStripMenuItem";
+            this.geralToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
+            this.geralToolStripMenuItem.Text = "Gestão";
+            // 
             // utilizadoresToolStripMenuItem
             // 
             this.utilizadoresToolStripMenuItem.Name = "utilizadoresToolStripMenuItem";
-            this.utilizadoresToolStripMenuItem.Size = new System.Drawing.Size(57, 29);
-            this.utilizadoresToolStripMenuItem.Text = "Sair";
+            this.utilizadoresToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.utilizadoresToolStripMenuItem.Text = "Utilizadores";
+            // 
+            // artigosToolStripMenuItem
+            // 
+            this.artigosToolStripMenuItem.Name = "artigosToolStripMenuItem";
+            this.artigosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.artigosToolStripMenuItem.Text = "Artigos";
+            this.artigosToolStripMenuItem.Click += new System.EventHandler(this.artigosToolStripMenuItem_Click);
             // 
             // tiposDeArtigosToolStripMenuItem
             // 
@@ -76,54 +109,31 @@
             this.tiposDeArtigosToolStripMenuItem1,
             this.orçamentosToolStripMenuItem1});
             this.tiposDeArtigosToolStripMenuItem.Name = "tiposDeArtigosToolStripMenuItem";
-            this.tiposDeArtigosToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
-            this.tiposDeArtigosToolStripMenuItem.Text = "Gestão";
+            this.tiposDeArtigosToolStripMenuItem.Size = new System.Drawing.Size(16, 29);
             // 
             // tiposToolStripMenuItem
             // 
             this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
-            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(245, 34);
             this.tiposToolStripMenuItem.Text = "Utilizadores";
             // 
             // artigosToolStripMenuItem1
             // 
             this.artigosToolStripMenuItem1.Name = "artigosToolStripMenuItem1";
-            this.artigosToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.artigosToolStripMenuItem1.Size = new System.Drawing.Size(245, 34);
             this.artigosToolStripMenuItem1.Text = "Artigos";
             // 
             // tiposDeArtigosToolStripMenuItem1
             // 
             this.tiposDeArtigosToolStripMenuItem1.Name = "tiposDeArtigosToolStripMenuItem1";
-            this.tiposDeArtigosToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.tiposDeArtigosToolStripMenuItem1.Size = new System.Drawing.Size(245, 34);
             this.tiposDeArtigosToolStripMenuItem1.Text = "Tipos de Artigos";
-            this.tiposDeArtigosToolStripMenuItem1.Click += new System.EventHandler(this.tiposDeArtigosToolStripMenuItem1_Click);
             // 
             // orçamentosToolStripMenuItem1
             // 
             this.orçamentosToolStripMenuItem1.Name = "orçamentosToolStripMenuItem1";
-            this.orçamentosToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.orçamentosToolStripMenuItem1.Size = new System.Drawing.Size(245, 34);
             this.orçamentosToolStripMenuItem1.Text = "Orçamentos";
-            // 
-            // artigosToolStripMenuItem
-            // 
-            this.artigosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.planeamentoDeComprasToolStripMenuItem1,
-            this.modoCompraToolStripMenuItem});
-            this.artigosToolStripMenuItem.Name = "artigosToolStripMenuItem";
-            this.artigosToolStripMenuItem.Size = new System.Drawing.Size(100, 29);
-            this.artigosToolStripMenuItem.Text = "Compras";
-            // 
-            // planeamentoDeComprasToolStripMenuItem1
-            // 
-            this.planeamentoDeComprasToolStripMenuItem1.Name = "planeamentoDeComprasToolStripMenuItem1";
-            this.planeamentoDeComprasToolStripMenuItem1.Size = new System.Drawing.Size(319, 34);
-            this.planeamentoDeComprasToolStripMenuItem1.Text = "Planeamento de Compras";
-            // 
-            // modoCompraToolStripMenuItem
-            // 
-            this.modoCompraToolStripMenuItem.Name = "modoCompraToolStripMenuItem";
-            this.modoCompraToolStripMenuItem.Size = new System.Drawing.Size(319, 34);
-            this.modoCompraToolStripMenuItem.Text = "Modo Compra";
             // 
             // estatísticasToolStripMenuItem
             // 
@@ -170,7 +180,7 @@
             // 
             // buttonAbrirModoCompra
             // 
-            this.buttonAbrirModoCompra.Location = new System.Drawing.Point(18, 358);
+            this.buttonAbrirModoCompra.Location = new System.Drawing.Point(34, 349);
             this.buttonAbrirModoCompra.Name = "buttonAbrirModoCompra";
             this.buttonAbrirModoCompra.Size = new System.Drawing.Size(177, 59);
             this.buttonAbrirModoCompra.TabIndex = 5;
@@ -178,11 +188,79 @@
             this.buttonAbrirModoCompra.UseVisualStyleBackColor = true;
             this.buttonAbrirModoCompra.Click += new System.EventHandler(this.buttonAbrirModoCompra_Click);
             // 
+            // groupBoxAcessosRapidos
+            // 
+            this.groupBoxAcessosRapidos.Controls.Add(this.buttonOrcamentos);
+            this.groupBoxAcessosRapidos.Controls.Add(this.buttonArtigos);
+            this.groupBoxAcessosRapidos.Controls.Add(this.buttonModoCompra);
+            this.groupBoxAcessosRapidos.Controls.Add(this.buttonPlaneamento);
+            this.groupBoxAcessosRapidos.Location = new System.Drawing.Point(349, 185);
+            this.groupBoxAcessosRapidos.Name = "groupBoxAcessosRapidos";
+            this.groupBoxAcessosRapidos.Size = new System.Drawing.Size(246, 243);
+            this.groupBoxAcessosRapidos.TabIndex = 6;
+            this.groupBoxAcessosRapidos.TabStop = false;
+            this.groupBoxAcessosRapidos.Text = "Acessos Rápidos";
+            // 
+            // buttonOrcamentos
+            // 
+            this.buttonOrcamentos.Location = new System.Drawing.Point(11, 177);
+            this.buttonOrcamentos.Name = "buttonOrcamentos";
+            this.buttonOrcamentos.Size = new System.Drawing.Size(125, 46);
+            this.buttonOrcamentos.TabIndex = 3;
+            this.buttonOrcamentos.Text = "Orçamentos";
+            this.buttonOrcamentos.UseVisualStyleBackColor = true;
+            this.buttonOrcamentos.Click += new System.EventHandler(this.buttonOrcamentos_Click);
+            // 
+            // buttonArtigos
+            // 
+            this.buttonArtigos.Location = new System.Drawing.Point(11, 122);
+            this.buttonArtigos.Name = "buttonArtigos";
+            this.buttonArtigos.Size = new System.Drawing.Size(125, 49);
+            this.buttonArtigos.TabIndex = 2;
+            this.buttonArtigos.Text = "Artigos";
+            this.buttonArtigos.UseVisualStyleBackColor = true;
+            this.buttonArtigos.Click += new System.EventHandler(this.buttonArtigos_Click);
+            // 
+            // buttonModoCompra
+            // 
+            this.buttonModoCompra.Location = new System.Drawing.Point(11, 70);
+            this.buttonModoCompra.Name = "buttonModoCompra";
+            this.buttonModoCompra.Size = new System.Drawing.Size(125, 46);
+            this.buttonModoCompra.TabIndex = 1;
+            this.buttonModoCompra.Text = "Modo Compra";
+            this.buttonModoCompra.UseVisualStyleBackColor = true;
+            this.buttonModoCompra.Click += new System.EventHandler(this.buttonModoCompra_Click);
+            // 
+            // buttonPlaneamento
+            // 
+            this.buttonPlaneamento.Location = new System.Drawing.Point(11, 25);
+            this.buttonPlaneamento.Name = "buttonPlaneamento";
+            this.buttonPlaneamento.Size = new System.Drawing.Size(125, 39);
+            this.buttonPlaneamento.TabIndex = 0;
+            this.buttonPlaneamento.Text = "Planeamento";
+            this.buttonPlaneamento.UseVisualStyleBackColor = true;
+            this.buttonPlaneamento.Click += new System.EventHandler(this.buttonPlaneamento_Click);
+            // 
+            // tipoDeArtigosToolStripMenuItem
+            // 
+            this.tipoDeArtigosToolStripMenuItem.Name = "tipoDeArtigosToolStripMenuItem";
+            this.tipoDeArtigosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.tipoDeArtigosToolStripMenuItem.Text = "Tipo de Artigos";
+            this.tipoDeArtigosToolStripMenuItem.Click += new System.EventHandler(this.tipoDeArtigosToolStripMenuItem_Click);
+            // 
+            // orçamentosToolStripMenuItem
+            // 
+            this.orçamentosToolStripMenuItem.Name = "orçamentosToolStripMenuItem";
+            this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.orçamentosToolStripMenuItem.Text = "Orçamentos";
+            this.orçamentosToolStripMenuItem.Click += new System.EventHandler(this.orçamentosToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBoxAcessosRapidos);
             this.Controls.Add(this.buttonAbrirModoCompra);
             this.Controls.Add(this.listBoxComprasAbertas);
             this.Controls.Add(this.labelComprasAbertas);
@@ -194,6 +272,7 @@
             this.Text = "FormPrincipal";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBoxAcessosRapidos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,17 +285,24 @@
         private System.Windows.Forms.Label labelUtilizador;
         private System.Windows.Forms.Label labelComprasAbertas;
         private System.Windows.Forms.ListBox listBoxComprasAbertas;
-        private System.Windows.Forms.ToolStripMenuItem utilizadoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposDeArtigosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem artigosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tiposDeArtigosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem orçamentosToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem artigosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem planeamentoDeComprasToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem modoCompraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estatísticasToolStripMenuItem;
         private System.Windows.Forms.Button buttonAbrirModoCompra;
+        private System.Windows.Forms.GroupBox groupBoxAcessosRapidos;
+        private System.Windows.Forms.Button buttonOrcamentos;
+        private System.Windows.Forms.Button buttonArtigos;
+        private System.Windows.Forms.Button buttonModoCompra;
+        private System.Windows.Forms.Button buttonPlaneamento;
+        private System.Windows.Forms.ToolStripMenuItem geralToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem utilizadoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem artigosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeArtigosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem orçamentosToolStripMenuItem;
     }
 }
 
