@@ -14,7 +14,7 @@ namespace iShopping.Model
         public string Nome { get; set; }
 
         public int TipoArtigoId { get; set; }
-        public virtual TipoArtigo TipoArtigo { get; set; }
+        public virtual TipoArtigo TipoArtigo { get; set; } 
 
         public override string ToString()
         {

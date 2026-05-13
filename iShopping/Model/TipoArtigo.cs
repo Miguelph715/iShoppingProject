@@ -12,6 +12,7 @@ namespace iShopping.Model
         public int Id { get; set; }
                 
         public string Nome { get; set; }
+        
 
         public virtual ICollection<Artigo> Artigos { get; set; }
 

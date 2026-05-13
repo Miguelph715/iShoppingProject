@@ -12,7 +12,7 @@ namespace iShopping.Model
         protected override void Seed(iShoppingContext context)
         {
             // Alterar para o vosso context
-            context.Utilizadores.Add(new Utilizador { Username = "Test User", Password = "123" });
+            context.Utilizadores.Add(new Utilizador { Username = "abc", Password = "123" });
             base.Seed(context);
         }
     }
