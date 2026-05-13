@@ -32,19 +32,60 @@ namespace iShopping
             }*/
 
             FormModoCompra form = new FormModoCompra();
-            form.Show();
+            form.ShowDialog();
         }
 
-        private void tiposDeArtigosToolStripMenuItem1_Click(object sender, EventArgs e)
+        //Ligação Buttons ToolStrip
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormGestaoTiposArtigo formGestaoTiposArtigo = new FormGestaoTiposArtigo();
-            formGestaoTiposArtigo.Show();
+            this.Close();
+        }
+        private void artigosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormGestaoArtigos FormGestaoArtigos = new FormGestaoArtigos();
+            FormGestaoArtigos.ShowDialog();
         }
 
+        private void tipoDeArtigosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormGestaoTiposArtigo FormGestaoTiposArtigo = new FormGestaoTiposArtigo();
+            FormGestaoTiposArtigo.ShowDialog();
+        }
+
+        private void orçamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormGestaoOrcamentos FormGestaoOrcamentos = new FormGestaoOrcamentos();
+            FormGestaoOrcamentos.ShowDialog();
+        }
         private void estatísticasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEstatisticas formEstatisticas = new FormEstatisticas();
-            formEstatisticas.Show();
+            formEstatisticas.ShowDialog();
+        }
+
+        //Ligação Buttons Acesso Rápido
+        private void buttonPlaneamento_Click(object sender, EventArgs e)
+        {
+            FormPlaneamentoCompras formPlaneamentoCompras = new FormPlaneamentoCompras();
+            formPlaneamentoCompras.ShowDialog();
+        }
+
+        private void buttonModoCompra_Click(object sender, EventArgs e)
+        {
+            FormModoCompra formModoCompra = new FormModoCompra();
+            formModoCompra.ShowDialog();
+        }
+
+        private void buttonArtigos_Click(object sender, EventArgs e)
+        {
+            FormGestaoArtigos FormGestaoArtigos = new FormGestaoArtigos();
+            FormGestaoArtigos.ShowDialog();
+        }
+
+        private void buttonOrcamentos_Click(object sender, EventArgs e)
+        {
+            FormGestaoOrcamentos FormGestaoOrcamentos = new FormGestaoOrcamentos();
+            FormGestaoOrcamentos.ShowDialog();
         }
 
         private void artigosToolStripMenuItem1_Click(object sender, EventArgs e)
