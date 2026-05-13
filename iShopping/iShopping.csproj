@@ -62,6 +62,7 @@
     <Compile Include="Controller\OrcamentoController.cs" />
     <Compile Include="Controller\TipoArtigoController.cs" />
     <Compile Include="Controller\UtilizadorController.cs" />
+    <Compile Include="Model\AppDbInitializer.cs" />
     <Compile Include="Model\Artigo.cs" />
     <Compile Include="Model\Compra.cs" />
     <Compile Include="Model\iShoppingContext.cs" />
