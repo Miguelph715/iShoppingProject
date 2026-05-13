@@ -35,10 +35,18 @@ namespace iShopping
             form.Show();
         }
 
+        private void tiposDeArtigosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormGestaoTiposArtigo formGestaoTiposArtigo = new FormGestaoTiposArtigo();
+            formGestaoTiposArtigo.Show();
+        }
+
         private void estatísticasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEstatisticas formEstatisticas = new FormEstatisticas();
             formEstatisticas.Show();
         }
+
+        
     }
 }

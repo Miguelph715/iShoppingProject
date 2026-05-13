@@ -82,25 +82,26 @@
             // tiposToolStripMenuItem
             // 
             this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
-            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(245, 34);
+            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.tiposToolStripMenuItem.Text = "Utilizadores";
             // 
             // artigosToolStripMenuItem1
             // 
             this.artigosToolStripMenuItem1.Name = "artigosToolStripMenuItem1";
-            this.artigosToolStripMenuItem1.Size = new System.Drawing.Size(245, 34);
+            this.artigosToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.artigosToolStripMenuItem1.Text = "Artigos";
             // 
             // tiposDeArtigosToolStripMenuItem1
             // 
             this.tiposDeArtigosToolStripMenuItem1.Name = "tiposDeArtigosToolStripMenuItem1";
-            this.tiposDeArtigosToolStripMenuItem1.Size = new System.Drawing.Size(245, 34);
+            this.tiposDeArtigosToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.tiposDeArtigosToolStripMenuItem1.Text = "Tipos de Artigos";
+            this.tiposDeArtigosToolStripMenuItem1.Click += new System.EventHandler(this.tiposDeArtigosToolStripMenuItem1_Click);
             // 
             // orçamentosToolStripMenuItem1
             // 
             this.orçamentosToolStripMenuItem1.Name = "orçamentosToolStripMenuItem1";
-            this.orçamentosToolStripMenuItem1.Size = new System.Drawing.Size(245, 34);
+            this.orçamentosToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.orçamentosToolStripMenuItem1.Text = "Orçamentos";
             // 
             // artigosToolStripMenuItem
@@ -134,7 +135,7 @@
             // labelTítulo
             // 
             this.labelTítulo.AutoSize = true;
-            this.labelTítulo.Location = new System.Drawing.Point(13, 74);
+            this.labelTítulo.Location = new System.Drawing.Point(12, 59);
             this.labelTítulo.Name = "labelTítulo";
             this.labelTítulo.Size = new System.Drawing.Size(80, 20);
             this.labelTítulo.TabIndex = 1;
