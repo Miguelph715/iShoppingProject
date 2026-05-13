@@ -147,27 +147,11 @@
 
             this.orçamentosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.orçamentosToolStripMenuItem1.Text = "Orçamentos";
-            // 
-            // artigosToolStripMenuItem
-            // 
-            this.artigosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.planeamentoDeComprasToolStripMenuItem1,
-            this.modoCompraToolStripMenuItem});
+            
             this.artigosToolStripMenuItem.Name = "artigosToolStripMenuItem";
             this.artigosToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
             this.artigosToolStripMenuItem.Text = "Compras";
-            // 
-            // planeamentoDeComprasToolStripMenuItem1
-            // 
-            this.planeamentoDeComprasToolStripMenuItem1.Name = "planeamentoDeComprasToolStripMenuItem1";
-            this.planeamentoDeComprasToolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
-            this.planeamentoDeComprasToolStripMenuItem1.Text = "Planeamento de Compras";
-            // 
-            // modoCompraToolStripMenuItem
-            // 
-            this.modoCompraToolStripMenuItem.Name = "modoCompraToolStripMenuItem";
-            this.modoCompraToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.modoCompraToolStripMenuItem.Text = "Modo Compra";
+           
             // 
             this.orçamentosToolStripMenuItem1.Size = new System.Drawing.Size(245, 34);
             this.orçamentosToolStripMenuItem1.Text = "Orçamentos";
