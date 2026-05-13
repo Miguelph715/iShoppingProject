@@ -110,6 +110,7 @@
             this.buttonEditarItem.TabIndex = 7;
             this.buttonEditarItem.Text = "Editar Item";
             this.buttonEditarItem.UseVisualStyleBackColor = true;
+            this.buttonEditarItem.Click += new System.EventHandler(this.buttonEditarItem_Click);
             // 
             // buttonEliminarItem
             // 

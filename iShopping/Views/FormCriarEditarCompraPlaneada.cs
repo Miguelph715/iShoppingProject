@@ -81,6 +81,11 @@ namespace iShopping.Views
             LimparCamposItem();
         }
 
+        private void buttonEditarItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void AtualizarListaItensCompra()
         {
             listBoxItensCompra.DataSource = null;
