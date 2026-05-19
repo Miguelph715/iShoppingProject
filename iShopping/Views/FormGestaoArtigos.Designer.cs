@@ -44,66 +44,59 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(33, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.Size = new System.Drawing.Size(114, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Filtrar por Tipo:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 62);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(33, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.Size = new System.Drawing.Size(123, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Nome do Artigo:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 94);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(33, 145);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.Size = new System.Drawing.Size(111, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Tipo de Artigo:";
             // 
             // comboBoxFiltroTipo
             // 
             this.comboBoxFiltroTipo.FormattingEnabled = true;
-            this.comboBoxFiltroTipo.Location = new System.Drawing.Point(114, 27);
-            this.comboBoxFiltroTipo.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxFiltroTipo.Location = new System.Drawing.Point(171, 42);
             this.comboBoxFiltroTipo.Name = "comboBoxFiltroTipo";
-            this.comboBoxFiltroTipo.Size = new System.Drawing.Size(82, 21);
+            this.comboBoxFiltroTipo.Size = new System.Drawing.Size(121, 28);
             this.comboBoxFiltroTipo.TabIndex = 10;
             this.comboBoxFiltroTipo.SelectedIndexChanged += new System.EventHandler(this.cbFiltroTipo_SelectedIndexChanged);
             // 
             // textBoxNomeArtigo
             // 
-            this.textBoxNomeArtigo.Location = new System.Drawing.Point(114, 62);
-            this.textBoxNomeArtigo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxNomeArtigo.Location = new System.Drawing.Point(171, 95);
             this.textBoxNomeArtigo.Name = "textBoxNomeArtigo";
-            this.textBoxNomeArtigo.Size = new System.Drawing.Size(82, 20);
+            this.textBoxNomeArtigo.Size = new System.Drawing.Size(121, 26);
             this.textBoxNomeArtigo.TabIndex = 13;
             // 
             // comboBoxTipoArtigo
             // 
             this.comboBoxTipoArtigo.FormattingEnabled = true;
-            this.comboBoxTipoArtigo.Location = new System.Drawing.Point(114, 94);
-            this.comboBoxTipoArtigo.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxTipoArtigo.Location = new System.Drawing.Point(171, 145);
             this.comboBoxTipoArtigo.Name = "comboBoxTipoArtigo";
-            this.comboBoxTipoArtigo.Size = new System.Drawing.Size(82, 21);
+            this.comboBoxTipoArtigo.Size = new System.Drawing.Size(121, 28);
             this.comboBoxTipoArtigo.TabIndex = 14;
             // 
             // buttonAdicionarArtigo
             // 
-            this.buttonAdicionarArtigo.Location = new System.Drawing.Point(25, 133);
-            this.buttonAdicionarArtigo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAdicionarArtigo.Location = new System.Drawing.Point(38, 205);
             this.buttonAdicionarArtigo.Name = "buttonAdicionarArtigo";
-            this.buttonAdicionarArtigo.Size = new System.Drawing.Size(71, 27);
+            this.buttonAdicionarArtigo.Size = new System.Drawing.Size(106, 42);
             this.buttonAdicionarArtigo.TabIndex = 15;
             this.buttonAdicionarArtigo.Text = "Adicionar";
             this.buttonAdicionarArtigo.UseVisualStyleBackColor = true;
@@ -111,10 +104,9 @@
             // 
             // buttonEditarArtigo
             // 
-            this.buttonEditarArtigo.Location = new System.Drawing.Point(114, 133);
-            this.buttonEditarArtigo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonEditarArtigo.Location = new System.Drawing.Point(171, 205);
             this.buttonEditarArtigo.Name = "buttonEditarArtigo";
-            this.buttonEditarArtigo.Size = new System.Drawing.Size(72, 27);
+            this.buttonEditarArtigo.Size = new System.Drawing.Size(108, 42);
             this.buttonEditarArtigo.TabIndex = 16;
             this.buttonEditarArtigo.Text = "Editar";
             this.buttonEditarArtigo.UseVisualStyleBackColor = true;
@@ -122,10 +114,9 @@
             // 
             // buttonEliminarArtigo
             // 
-            this.buttonEliminarArtigo.Location = new System.Drawing.Point(204, 133);
-            this.buttonEliminarArtigo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonEliminarArtigo.Location = new System.Drawing.Point(306, 205);
             this.buttonEliminarArtigo.Name = "buttonEliminarArtigo";
-            this.buttonEliminarArtigo.Size = new System.Drawing.Size(68, 27);
+            this.buttonEliminarArtigo.Size = new System.Drawing.Size(102, 42);
             this.buttonEliminarArtigo.TabIndex = 17;
             this.buttonEliminarArtigo.Text = "Eliminar";
             this.buttonEliminarArtigo.UseVisualStyleBackColor = true;
@@ -134,19 +125,18 @@
             // listBoxArtigos
             // 
             this.listBoxArtigos.FormattingEnabled = true;
-            this.listBoxArtigos.Location = new System.Drawing.Point(25, 175);
-            this.listBoxArtigos.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxArtigos.ItemHeight = 20;
+            this.listBoxArtigos.Location = new System.Drawing.Point(38, 269);
             this.listBoxArtigos.Name = "listBoxArtigos";
-            this.listBoxArtigos.Size = new System.Drawing.Size(249, 160);
+            this.listBoxArtigos.Size = new System.Drawing.Size(372, 244);
             this.listBoxArtigos.TabIndex = 19;
             this.listBoxArtigos.SelectedIndexChanged += new System.EventHandler(this.listBoxArtigos_SelectedIndexChanged);
             // 
             // buttonLimparArtigo
             // 
-            this.buttonLimparArtigo.Location = new System.Drawing.Point(204, 52);
-            this.buttonLimparArtigo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLimparArtigo.Location = new System.Drawing.Point(306, 80);
             this.buttonLimparArtigo.Name = "buttonLimparArtigo";
-            this.buttonLimparArtigo.Size = new System.Drawing.Size(68, 55);
+            this.buttonLimparArtigo.Size = new System.Drawing.Size(102, 85);
             this.buttonLimparArtigo.TabIndex = 18;
             this.buttonLimparArtigo.Text = "Limpar";
             this.buttonLimparArtigo.UseVisualStyleBackColor = true;
@@ -154,9 +144,9 @@
             // 
             // FormGestaoArtigos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 354);
+            this.ClientSize = new System.Drawing.Size(472, 545);
             this.Controls.Add(this.listBoxArtigos);
             this.Controls.Add(this.buttonLimparArtigo);
             this.Controls.Add(this.buttonEliminarArtigo);
@@ -168,7 +158,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormGestaoArtigos";
             this.Text = "FormGestaoArtigos";
             this.Load += new System.EventHandler(this.FormGestaoArtigos_Load);

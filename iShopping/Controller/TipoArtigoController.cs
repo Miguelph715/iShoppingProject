@@ -1,9 +1,8 @@
 ﻿using iShopping.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace iShopping.Controller
 {
@@ -11,46 +10,89 @@ namespace iShopping.Controller
     {
         public List<TipoArtigo> ObterTodos()
         {
-            using (var context = new iShoppingContext())
+            try
             {
-                // Substitui 'TiposArtigo' pelo nome exato do teu DbSet no iShoppingContext.cs
-                return context.TiposArtigo.ToList();
+                using (var context = new iShoppingContext())
+                {
+                    return context.TiposArtigo.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao obter Tipos de Artigo: " + ex.Message);
             }
         }
 
         public void Adicionar(TipoArtigo novoTipo)
         {
-            using (var context = new iShoppingContext())
+            try
             {
-                context.TiposArtigo.Add(novoTipo);
-                context.SaveChanges(); // Guarda as alterações na Base de Dados
+                using (var context = new iShoppingContext())
+                {
+                    // Verifica se já existe um tipo com o mesmo nome
+                    bool jaExiste = context.TiposArtigo
+                        .Any(t => t.Nome.ToLower() == novoTipo.Nome.ToLower());
+
+                    if (jaExiste)
+                        throw new Exception("Já existe um Tipo de Artigo com esse nome.");
+
+                    context.TiposArtigo.Add(novoTipo);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao adicionar Tipo de Artigo: " + ex.Message);
             }
         }
 
         public void Atualizar(TipoArtigo tipo)
         {
-            using (var context = new iShoppingContext())
+            try
             {
-                // Informa o Entity Framework que este objeto foi modificado
-                context.Entry(tipo).State = System.Data.Entity.EntityState.Modified;
-                // Nota: se estiveres a usar EF Core em vez de EF6, a linha acima pode ser apenas: context.TiposArtigo.Update(tipo);
+                using (var context = new iShoppingContext())
+                {
+                    // Verifica se já existe outro tipo com o mesmo nome (excluindo o próprio)
+                    bool jaExiste = context.TiposArtigo
+                        .Any(t => t.Nome.ToLower() == tipo.Nome.ToLower() && t.Id != tipo.Id);
 
-                context.SaveChanges();
+                    if (jaExiste)
+                        throw new Exception("Já existe um Tipo de Artigo com esse nome.");
+
+                    context.Entry(tipo).State = EntityState.Modified;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao atualizar Tipo de Artigo: " + ex.Message);
             }
         }
 
-        public void Remover(int id)
+        public bool Remover(int id)
         {
-            using (var context = new iShoppingContext())
+            try
             {
-                // Procura o artigo pelo ID
-                var tipoParaRemover = context.TiposArtigo.Find(id);
-
-                if (tipoParaRemover != null)
+                using (var context = new iShoppingContext())
                 {
-                    context.TiposArtigo.Remove(tipoParaRemover); // Remove do contexto
-                    context.SaveChanges(); // Elimina efetivamente da Base de Dados
+                    var tipo = context.TiposArtigo.Find(id);
+
+                    if (tipo == null)
+                        throw new Exception("Tipo de Artigo não encontrado.");
+
+                    // Verifica se tem artigos associados — se tiver, não deixa eliminar
+                    bool temArtigos = context.Artigos.Any(a => a.TipoArtigoId == id);
+                    if (temArtigos)
+                        return false; // o Form vai mostrar mensagem adequada
+
+                    context.TiposArtigo.Remove(tipo);
+                    context.SaveChanges();
+                    return true;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao remover Tipo de Artigo: " + ex.Message);
             }
         }
     }

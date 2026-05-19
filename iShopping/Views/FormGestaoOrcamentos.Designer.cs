@@ -71,6 +71,7 @@
             this.listBoxOrcamentos.Name = "listBoxOrcamentos";
             this.listBoxOrcamentos.Size = new System.Drawing.Size(237, 224);
             this.listBoxOrcamentos.TabIndex = 3;
+            this.listBoxOrcamentos.SelectedIndexChanged += new System.EventHandler(this.listBoxOrcamentos_SelectedIndexChanged);
             // 
             // buttonAdicionarOrcamento
             // 
@@ -90,6 +91,8 @@
             this.buttonEditarOrcamento.TabIndex = 17;
             this.buttonEditarOrcamento.Text = "Editar";
             this.buttonEditarOrcamento.UseVisualStyleBackColor = true;
+            this.buttonEditarOrcamento.BackgroundImageLayoutChanged += new System.EventHandler(this.buttonEditarOrcamento_Click);
+            this.buttonEditarOrcamento.Click += new System.EventHandler(this.buttonEditarOrcamento_Click);
             // 
             // buttonEliminarOrcamento
             // 
@@ -99,6 +102,7 @@
             this.buttonEliminarOrcamento.TabIndex = 18;
             this.buttonEliminarOrcamento.Text = "Eliminar";
             this.buttonEliminarOrcamento.UseVisualStyleBackColor = true;
+            this.buttonEliminarOrcamento.BackgroundImageLayoutChanged += new System.EventHandler(this.buttonEliminarOrcamento_Click);
             // 
             // labelMes
             // 
@@ -144,6 +148,7 @@
             this.buttonLimparOrcamento.TabIndex = 23;
             this.buttonLimparOrcamento.Text = "Limpar";
             this.buttonLimparOrcamento.UseVisualStyleBackColor = true;
+            this.buttonLimparOrcamento.Click += new System.EventHandler(this.buttonLimparOrcamento_Click);
             // 
             // FormGestaoOrcamentos
             // 

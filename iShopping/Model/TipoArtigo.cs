@@ -10,7 +10,8 @@ namespace iShopping.Model
     public class TipoArtigo
     {
         public int Id { get; set; }
-                
+
+        [Required]
         public string Nome { get; set; }
         
 

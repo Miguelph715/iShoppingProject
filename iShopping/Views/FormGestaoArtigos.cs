@@ -2,90 +2,98 @@
 using iShopping.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace iShopping.Views
 {
     public partial class FormGestaoArtigos : Form
     {
-        private ArtigoController _artigoController;
-        private TipoArtigoController _tipoArtigoController;
+        private ArtigoController artigoController;
+        private TipoArtigoController tipoArtigoController;
 
         public FormGestaoArtigos()
         {
             InitializeComponent();
-            _artigoController = new ArtigoController();
-            _tipoArtigoController = new TipoArtigoController(); // Precisamos deste para preencher as ComboBoxes
+            artigoController = new ArtigoController();
+            tipoArtigoController = new TipoArtigoController();
         }
 
         private void FormGestaoArtigos_Load(object sender, EventArgs e)
         {
-            CarregarCombos();
-            AtualizarLista();
+            try
+            {
+                CarregarCombos();
+                AtualizarLista();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Preenche as duas ComboBoxes com os Tipos de Artigo que vêm da Base de Dados
         private void CarregarCombos()
         {
-            List<TipoArtigo> tipos = _tipoArtigoController.ObterTodos();
+            try
+            {
+                List<TipoArtigo> tipos = tipoArtigoController.ObterTodos();
 
-            // 1. Configurar a ComboBox de criar/editar artigos
-            comboBoxTipoArtigo.DataSource = new List<TipoArtigo>(tipos);
-            comboBoxTipoArtigo.DisplayMember = "Nome"; // O que o utilizador vê
-            comboBoxTipoArtigo.ValueMember = "Id";     // O valor guardado por trás
+                comboBoxTipoArtigo.DataSource = new List<TipoArtigo>(tipos);
+                comboBoxTipoArtigo.DisplayMember = "Nome";
+                comboBoxTipoArtigo.ValueMember = "Id";
 
-            // 2. Configurar a ComboBox de Filtro (Vamos adicionar uma opção "Todos" no início)
-            List<TipoArtigo> tiposFiltro = new List<TipoArtigo>();
-            tiposFiltro.Add(new TipoArtigo { Id = 0, Nome = "Todos" });
-            tiposFiltro.AddRange(tipos);
+                List<TipoArtigo> tiposFiltro = new List<TipoArtigo>();
+                tiposFiltro.Add(new TipoArtigo { Id = 0, Nome = "Todos" });
+                tiposFiltro.AddRange(tipos);
 
-            comboBoxFiltroTipo.DataSource = tiposFiltro;
-            comboBoxFiltroTipo.DisplayMember = "Nome";
-            comboBoxFiltroTipo.ValueMember = "Id";
+                comboBoxFiltroTipo.DataSource = tiposFiltro;
+                comboBoxFiltroTipo.DisplayMember = "Nome";
+                comboBoxFiltroTipo.ValueMember = "Id";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao carregar Tipos de Artigo: " + ex.Message);
+            }
         }
 
         private void AtualizarLista()
         {
-            listBoxArtigos.DataSource = null;
-
-            // Se o filtro selecionado tiver ID > 0, pesquisamos por esse tipo. Se for 0 ("Todos"), trazemos tudo.
-            if (comboBoxFiltroTipo.SelectedValue != null && (int)comboBoxFiltroTipo.SelectedValue > 0)
+            try
             {
-                int tipoIdSelecionado = (int)comboBoxFiltroTipo.SelectedValue;
-                listBoxArtigos.DataSource = _artigoController.ObterPorTipo(tipoIdSelecionado);
-            }
-            else
-            {
-                listBoxArtigos.DataSource = _artigoController.ObterTodos();
-            }
+                listBoxArtigos.DataSource = null;
+                int tipoIdSelecionado;
+                if (comboBoxFiltroTipo.SelectedValue != null &&
+                    int.TryParse(comboBoxFiltroTipo.SelectedValue.ToString(), out tipoIdSelecionado) &&
+                    tipoIdSelecionado > 0)
+                {
+                    listBoxArtigos.DataSource = artigoController.ObterPorTipo(tipoIdSelecionado);
+                }
 
-            listBoxArtigos.DisplayMember = "Nome";
+                listBoxArtigos.DisplayMember = "Nome";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Quando o utilizador muda o filtro lá em cima
         private void cbFiltroTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // O try-catch serve porque no Form Load este evento dispara antes da DataSource estar pronta
             try
             {
                 AtualizarLista();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Quando o utilizador clica num artigo na lista
         private void listBoxArtigos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxArtigos.SelectedItem is Artigo artigoSelecionado)
             {
                 textBoxNomeArtigo.Text = artigoSelecionado.Nome;
-                comboBoxTipoArtigo.SelectedValue = artigoSelecionado.TipoArtigoId; // Seleciona automaticamente o tipo certo na combobox
+                comboBoxTipoArtigo.SelectedValue = artigoSelecionado.TipoArtigoId;
             }
         }
 
@@ -93,35 +101,66 @@ namespace iShopping.Views
         {
             if (string.IsNullOrWhiteSpace(textBoxNomeArtigo.Text) || comboBoxTipoArtigo.SelectedValue == null)
             {
-                MessageBox.Show("Preencha o nome e selecione um Tipo de Artigo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Preencha o nome e selecione um Tipo de Artigo.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Artigo novoArtigo = new Artigo
+            try
             {
-                Nome = textBoxNomeArtigo.Text.Trim(),
-                TipoArtigoId = (int)comboBoxTipoArtigo.SelectedValue
-            };
+                Artigo novoArtigo = new Artigo
+                {
+                    Nome = textBoxNomeArtigo.Text.Trim(),
+                    TipoArtigoId = (int)comboBoxTipoArtigo.SelectedValue
+                };
 
-            _artigoController.Adicionar(novoArtigo);
-            MessageBox.Show("Artigo adicionado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                artigoController.Adicionar(novoArtigo);
 
-            LimparCampos();
-            AtualizarLista();
+                MessageBox.Show("Artigo adicionado com sucesso!", "Sucesso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimparCampos();
+                AtualizarLista();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBoxNomeArtigo.Text))
+            {
+                MessageBox.Show("O nome não pode estar vazio.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (listBoxArtigos.SelectedItem is Artigo artigoSelecionado)
             {
-                artigoSelecionado.Nome = textBoxNomeArtigo.Text.Trim();
-                artigoSelecionado.TipoArtigoId = (int)comboBoxTipoArtigo.SelectedValue;
+                try
+                {
+                    artigoSelecionado.Nome = textBoxNomeArtigo.Text.Trim();
+                    artigoSelecionado.TipoArtigoId = (int)comboBoxTipoArtigo.SelectedValue;
 
-                _artigoController.Atualizar(artigoSelecionado);
-                MessageBox.Show("Artigo atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    artigoController.Atualizar(artigoSelecionado);
 
-                LimparCampos();
-                AtualizarLista();
+                    MessageBox.Show("Artigo atualizado com sucesso!", "Sucesso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimparCampos();
+                    AtualizarLista();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um Artigo na lista para editar.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -129,12 +168,32 @@ namespace iShopping.Views
         {
             if (listBoxArtigos.SelectedItem is Artigo artigoSelecionado)
             {
-                if (MessageBox.Show($"Deseja eliminar '{artigoSelecionado.Nome}'?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DialogResult resposta = MessageBox.Show(
+                    $"Tem a certeza que deseja eliminar '{artigoSelecionado.Nome}'?",
+                    "Confirmar Eliminação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resposta == DialogResult.Yes)
                 {
-                    _artigoController.Remover(artigoSelecionado.Id);
-                    LimparCampos();
-                    AtualizarLista();
+                    try
+                    {
+                        artigoController.Remover(artigoSelecionado.Id);
+
+                        MessageBox.Show("Artigo eliminado com sucesso!", "Sucesso",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        LimparCampos();
+                        AtualizarLista();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um Artigo na lista para eliminar.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -149,5 +208,8 @@ namespace iShopping.Views
             if (comboBoxTipoArtigo.Items.Count > 0) comboBoxTipoArtigo.SelectedIndex = 0;
             listBoxArtigos.ClearSelected();
         }
+
     }
 }
+
+

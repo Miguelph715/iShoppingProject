@@ -23,6 +23,18 @@ namespace iShopping.Views
             // Cria o controller responsável pela gestão dos orçamentos.
             // Sem isto, o orcamentoController fica null e dá erro ao adicionar.
             orcamentoController = new OrcamentoController();
+
+            AtualizarLista();
+        }
+
+        private void listBoxOrcamentos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxOrcamentos.SelectedItem is Orcamento orcamentoSelecionado)
+            {
+                textBoxMes.Text = orcamentoSelecionado.Mes.ToString();
+                textBoxAno.Text = orcamentoSelecionado.Ano.ToString();
+                textBoxValor.Text = orcamentoSelecionado.Valor.ToString();
+            }
         }
 
         private bool ValidarCampos(out int mes, out int ano, out decimal valor)
@@ -130,21 +142,6 @@ namespace iShopping.Views
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
         // Atualiza a ListBox para mostrar o novo orçamento.
         private void AtualizarLista()
         {
@@ -161,5 +158,75 @@ namespace iShopping.Views
             listBoxOrcamentos.ClearSelected();
             textBoxMes.Focus();
         }
+
+        private void buttonEditarOrcamento_Click(object sender, EventArgs e)
+        {
+            if (listBoxOrcamentos.SelectedItem is Orcamento orcamentoSelecionado)
+            {
+                if (!ValidarCampos(out int mes, out int ano, out decimal valor))
+                    return;
+
+                // Verifica se ao alterar o mês/ano, não vai colidir com outro orçamento já existente
+
+                if (orcamentoController.ExisteOutroOrcamentoMensal(orcamentoSelecionado.Id, mes, ano))
+                {
+                    MessageBox.Show("Já existe outro orçamento registado para esse mês e ano.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Atualiza os dados
+                orcamentoSelecionado.Mes = mes;
+                orcamentoSelecionado.Ano = ano;
+                orcamentoSelecionado.Valor = valor;
+
+                // CUMPRIR REGRA 8 - Registar quem alterou e a data
+                orcamentoSelecionado.AlteradoPorId = UtilizadorController.UtilizadorLogadoId;
+                orcamentoSelecionado.DataAlteracao = DateTime.Now;
+
+                orcamentoController.Atualizar(orcamentoSelecionado);
+
+                MessageBox.Show("Orçamento atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                AtualizarLista();
+                LimparCampos();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um orçamento na lista para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+
+        }
+
+        private void buttonEliminarOrcamento_Click(object sender, EventArgs e)
+        {
+            if (listBoxOrcamentos.SelectedItem is Orcamento orcamentoSelecionado)
+            {
+                DialogResult resposta = MessageBox.Show(
+                    $"Tem a certeza que deseja eliminar o orçamento de {orcamentoSelecionado.Mes}/{orcamentoSelecionado.Ano}?",
+                    "Confirmar Eliminação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resposta == DialogResult.Yes)
+                {
+                    orcamentoController.Remover(orcamentoSelecionado.Id);
+                    MessageBox.Show("Orçamento eliminado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    AtualizarLista();
+                    LimparCampos();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecione um orçamento na lista para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonLimparOrcamento_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
+
+        
     }
 }
