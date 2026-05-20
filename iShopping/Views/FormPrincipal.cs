@@ -18,11 +18,6 @@ namespace iShopping
             InitializeComponent();
         }
 
-
-
-
-
-
         private void buttonAbrirModoCompra_Click(object sender, EventArgs e)
         {
             /*if (listBoxComprasAbertas.SelectedItem == null)
@@ -31,8 +26,9 @@ namespace iShopping
                 return;
             }*/
 
-            FormModoCompra form = new FormModoCompra(1);
-            form.ShowDialog();
+            //FormModoCompra formModoCompra = new FormModoCompra();
+            //formModoCompra.ShowDialog();
+            //FormPlanearCompra form = new FormPlanearCompra(1);
         }
 
         //Ligação Buttons ToolStrip
@@ -70,10 +66,11 @@ namespace iShopping
             formPlaneamentoCompras.ShowDialog();
         }
 
-        private void buttonModoCompra_Click(object sender, EventArgs e)
+        private void buttonPlanearCompra_Click(object sender, EventArgs e)
         {
-            FormModoCompra formModoCompra = new FormModoCompra(1);
-            formModoCompra.ShowDialog();
+            FormPlaneamentoCompras formPlaneamentoCompras = new FormPlaneamentoCompras();
+            formPlaneamentoCompras.ShowDialog();
+            //FormPlanearCompra formPlanearCompra = new FormPlanearCompra(1);
         }
 
         private void buttonArtigos_Click(object sender, EventArgs e)

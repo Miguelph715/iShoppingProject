@@ -86,25 +86,7 @@
             this.buttonEliminarOrcamento.Text = "Eliminar";
             this.buttonEliminarOrcamento.UseVisualStyleBackColor = true;
             this.buttonEliminarOrcamento.BackgroundImageLayoutChanged += new System.EventHandler(this.buttonEliminarOrcamento_Click);
-            this.buttonEliminarOrcamento.Click += new System.EventHandler(this.buttonEliminarOrcamento_Click);
-            // 
-            // labelMes
-            // 
-            this.labelMes.AutoSize = true;
-            this.labelMes.Location = new System.Drawing.Point(39, 62);
-            this.labelMes.Name = "labelMes";
-            this.labelMes.Size = new System.Drawing.Size(43, 20);
-            this.labelMes.TabIndex = 19;
-            this.labelMes.Text = "Mês:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 102);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 20);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Ano:";
+            this.buttonEliminarOrcamento.Click += new System.EventHandler(this.buttonEliminarOrcamento_Click);           
             // 
             // label3
             // 

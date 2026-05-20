@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormModoCompra : Form
+    public partial class FormPlanearCompra : Form
     {
         // Variáveis globais do formulário
         private int compraIdAtual;
@@ -16,7 +16,7 @@ namespace iShopping.Views
         private Compra compraAtual;
 
         // 1. ALTERAÇÃO IMPORTANTE: O construtor tem de receber o ID da compra selecionada no Planeamento!
-        public FormModoCompra(int compraId)
+        public FormPlanearCompra(int compraId)
         {
             InitializeComponent();
 
