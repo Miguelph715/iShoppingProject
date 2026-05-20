@@ -87,5 +87,79 @@ namespace iShopping.Controller
 
             return estatisticas;
         }
+
+        // 3. Método para sugerir o orçamento do próximo mês (Média dos anteriores)
+        public string SugerirOrcamento()
+        {
+            using (var context = new iShoppingContext())
+            {
+                var orcamentos = context.Orcamentos.ToList();
+
+                if (orcamentos.Count == 0)
+                    return "Orçamento Sugerido: Sem histórico de orçamentos para calcular uma média.";
+
+                // Calcula a média de todos os valores de orçamentos guardados
+                decimal media = orcamentos.Average(o => o.Valor);
+
+                return $"Orçamento Sugerido: {media:C} (baseado na média dos meses anteriores).";
+            }
+        }
+
+        // 4. Método para sugerir lista de compras consoante a semana do mês
+        public List<string> SugerirListaCompras()
+        {
+            List<string> sugestoes = new List<string>();
+
+            // Lógica para descobrir em que semana do mês estamos (1 a 4)
+            int diaAtual = DateTime.Now.Day;
+            int semanaAtual = (diaAtual - 1) / 7 + 1;
+            if (semanaAtual > 4) semanaAtual = 4; // Tudo o que passe do dia 21, consideramos a 4ª semana
+
+            sugestoes.Add($"Estamos na {semanaAtual}ª semana do mês.");
+            sugestoes.Add("Artigos habitualmente comprados nesta altura:");
+            sugestoes.Add("--------------------------------------------------");
+
+            using (var context = new iShoppingContext())
+            {
+                // Faz o Include também ao "Artigo" dentro do ItemCompra para termos acesso ao Nome do Artigo
+                var compras = context.Compras.Include(c => c.ItensCompra.Select(i => i.Artigo)).ToList();
+
+                // Usamos um HashSet em vez de List para que não sugira artigos repetidos
+                var artigosSugeridos = new HashSet<string>();
+
+                foreach (var compra in compras)
+                {
+                    // Calcular em que semana foi feita esta compra antiga
+                    int semanaCompra = (compra.DataCriacao.Day - 1) / 7 + 1;
+                    if (semanaCompra > 4) semanaCompra = 4;
+
+                    // Se a compra antiga calhou na mesma semana que a atual, guardamos os artigos!
+                    if (semanaCompra == semanaAtual)
+                    {
+                        foreach (var item in compra.ItensCompra)
+                        {
+                            if (item.Artigo != null)
+                            {
+                                artigosSugeridos.Add(item.Artigo.Nome);
+                            }
+                        }
+                    }
+                }
+
+                if (artigosSugeridos.Count > 0)
+                {
+                    foreach (var nomeArtigo in artigosSugeridos)
+                    {
+                        sugestoes.Add($"- {nomeArtigo}");
+                    }
+                }
+                else
+                {
+                    sugestoes.Add("Sem histórico de compras para esta semana específica.");
+                }
+            }
+
+            return sugestoes;
+        }
     }
 }

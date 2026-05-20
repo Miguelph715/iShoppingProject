@@ -32,22 +32,42 @@ namespace iShopping.Views
 
         private void CarregarEstatisticas()
         {
-            // Limpa o que lá estiver antes de carregar dados novos
+            // 1. Limpar as listas da Tab 1
             listBoxOrcamentosComprasMes.Items.Clear();
             listBoxPercentagemArtigos.Items.Clear();
 
-            // Pede as contas mensais ao Controller e preenche a ListBox da esquerda
+            // 2. Preencher a ListBox da Esquerda (Mensais)
             List<string> statsMensais = _estatisticaController.ObterEstatisticasMensais();
             foreach (string stat in statsMensais)
             {
                 listBoxOrcamentosComprasMes.Items.Add(stat);
             }
 
-            // Pede as percentagens ao Controller e preenche a ListBox da direita
+            // 3. Preencher a ListBox da Direita (Percentagens)
             List<string> statsPercentagens = _estatisticaController.ObterEstatisticasPercentagemArtigos();
             foreach (string stat in statsPercentagens)
             {
                 listBoxPercentagemArtigos.Items.Add(stat);
+            }
+        }
+
+        private void buttonGerarSugestoes_Click(object sender, EventArgs e)
+        {
+            // 1. Limpar a ListBox para não acumular se o utilizador clicar várias vezes
+            listBoxSugestoes.Items.Clear();
+
+            // 2. Ir buscar o Orçamento Sugerido e adicionar no topo da lista
+            string sugestaoOrcamento = _estatisticaController.SugerirOrcamento();
+            listBoxSugestoes.Items.Add(sugestaoOrcamento);
+
+            // Adicionar uma linha em branco para separar visualmente
+            listBoxSugestoes.Items.Add("");
+
+            // 3. Ir buscar a Lista de Compras sugerida e adicionar por baixo
+            List<string> sugestoesCompras = _estatisticaController.SugerirListaCompras();
+            foreach (string item in sugestoesCompras)
+            {
+                listBoxSugestoes.Items.Add(item);
             }
         }
     }

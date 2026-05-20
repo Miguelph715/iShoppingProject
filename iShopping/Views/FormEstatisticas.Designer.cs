@@ -48,10 +48,10 @@
             this.tabControlEstatisticas.Controls.Add(this.tabPage1);
             this.tabControlEstatisticas.Controls.Add(this.tabPage2);
             this.tabControlEstatisticas.Location = new System.Drawing.Point(29, 27);
-            this.tabControlEstatisticas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControlEstatisticas.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlEstatisticas.Name = "tabControlEstatisticas";
             this.tabControlEstatisticas.SelectedIndex = 0;
-            this.tabControlEstatisticas.Size = new System.Drawing.Size(545, 249);
+            this.tabControlEstatisticas.Size = new System.Drawing.Size(874, 257);
             this.tabControlEstatisticas.TabIndex = 0;
             // 
             // tabPage1
@@ -61,10 +61,10 @@
             this.tabPage1.Controls.Add(this.listBoxOrcamentosComprasMes);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(537, 223);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(866, 231);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -72,16 +72,16 @@
             // listBoxPercentagemArtigos
             // 
             this.listBoxPercentagemArtigos.FormattingEnabled = true;
-            this.listBoxPercentagemArtigos.Location = new System.Drawing.Point(279, 42);
-            this.listBoxPercentagemArtigos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxPercentagemArtigos.Location = new System.Drawing.Point(455, 42);
+            this.listBoxPercentagemArtigos.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxPercentagemArtigos.Name = "listBoxPercentagemArtigos";
-            this.listBoxPercentagemArtigos.Size = new System.Drawing.Size(236, 134);
+            this.listBoxPercentagemArtigos.Size = new System.Drawing.Size(409, 134);
             this.listBoxPercentagemArtigos.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(276, 15);
+            this.label2.Location = new System.Drawing.Point(459, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(239, 13);
@@ -92,9 +92,9 @@
             // 
             this.listBoxOrcamentosComprasMes.FormattingEnabled = true;
             this.listBoxOrcamentosComprasMes.Location = new System.Drawing.Point(2, 42);
-            this.listBoxOrcamentosComprasMes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxOrcamentosComprasMes.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxOrcamentosComprasMes.Name = "listBoxOrcamentosComprasMes";
-            this.listBoxOrcamentosComprasMes.Size = new System.Drawing.Size(236, 134);
+            this.listBoxOrcamentosComprasMes.Size = new System.Drawing.Size(409, 134);
             this.listBoxOrcamentosComprasMes.TabIndex = 1;
             // 
             // label1
@@ -113,10 +113,10 @@
             this.tabPage2.Controls.Add(this.buttonGerarSugestoes);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(457, 219);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(866, 231);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -125,20 +125,21 @@
             // 
             this.listBoxSugestoes.FormattingEnabled = true;
             this.listBoxSugestoes.Location = new System.Drawing.Point(13, 75);
-            this.listBoxSugestoes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBoxSugestoes.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxSugestoes.Name = "listBoxSugestoes";
-            this.listBoxSugestoes.Size = new System.Drawing.Size(215, 134);
+            this.listBoxSugestoes.Size = new System.Drawing.Size(668, 134);
             this.listBoxSugestoes.TabIndex = 2;
             // 
             // buttonGerarSugestoes
             // 
             this.buttonGerarSugestoes.Location = new System.Drawing.Point(13, 36);
-            this.buttonGerarSugestoes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonGerarSugestoes.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGerarSugestoes.Name = "buttonGerarSugestoes";
             this.buttonGerarSugestoes.Size = new System.Drawing.Size(94, 21);
             this.buttonGerarSugestoes.TabIndex = 1;
             this.buttonGerarSugestoes.Text = "Gerar Sugestões";
             this.buttonGerarSugestoes.UseVisualStyleBackColor = true;
+            this.buttonGerarSugestoes.Click += new System.EventHandler(this.buttonGerarSugestoes_Click);
             // 
             // label3
             // 
@@ -154,9 +155,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 338);
+            this.ClientSize = new System.Drawing.Size(914, 301);
             this.Controls.Add(this.tabControlEstatisticas);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormEstatisticas";
             this.Text = "FormEstatisticas";
             this.Load += new System.EventHandler(this.FormEstatisticas_Load);
