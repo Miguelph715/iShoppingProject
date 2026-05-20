@@ -23,16 +23,28 @@ namespace iShopping.Views
             // Cria o controller responsável pela gestão dos orçamentos.
             // Sem isto, o orcamentoController fica null e dá erro ao adicionar.
             orcamentoController = new OrcamentoController();
-
+            
+            // Carrega os orçamentos existentes na ListBox.
             AtualizarLista();
+
+            //Limpa o campo valores e remove seleções
+            LimparCampos();
+
+            // Coloca o calendário na data atual.
+            dateTimePickerDataOrcamento.Value = DateTime.Today;
         }
 
         private void listBoxOrcamentos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxOrcamentos.SelectedItem is Orcamento orcamentoSelecionado)
             {
-                textBoxMes.Text = orcamentoSelecionado.Mes.ToString();
-                textBoxAno.Text = orcamentoSelecionado.Ano.ToString();
+                // Como o orçamento guarda apenas mês e ano,
+                // criamos uma data com o dia 1 desse mês para preencher o DateTimePicker.
+                dateTimePickerDataOrcamento.Value = new DateTime(
+                    orcamentoSelecionado.Ano,
+                    orcamentoSelecionado.Mes,
+                    1);
+
                 textBoxValor.Text = orcamentoSelecionado.Valor.ToString();
             }
         }
@@ -44,27 +56,12 @@ namespace iShopping.Views
             ano = 0;
             valor = 0;
 
-            // Valida se o mês é um número e se está entre 1 e 12.
-            if (!int.TryParse(textBoxMes.Text.Trim(), out mes) || mes < 1 || mes > 12)
-            {
-                MessageBox.Show(
-                    "O mês deve ser um número entre 1 e 12.",
-                    "Validação",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return false;
-            }
+            // Vai buscar a data selecionada no DateTimePicker.
+            DateTime dataSelecionada = dateTimePickerDataOrcamento.Value.Date;
 
-            // Valida se o ano é um número válido.
-            if (!int.TryParse(textBoxAno.Text.Trim(), out ano) || ano < 2000)
-            {
-                MessageBox.Show(
-                    "Insira um ano válido.",
-                    "Validação",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return false;
-            }
+            // Como o orçamento é mensal, retiramos apenas o mês e o ano da data escolhida.
+            mes = dataSelecionada.Month;
+            ano = dataSelecionada.Year;
 
             // Valida se o valor é um número decimal e se é superior a zero.
             if (!decimal.TryParse(textBoxValor.Text.Trim(), out valor) || valor <= 0)
@@ -74,12 +71,14 @@ namespace iShopping.Views
                     "Validação",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
+
                 return false;
             }
 
             // Se chegou aqui, significa que todos os campos estão corretos.
             return true;
-        }
+        }     
+
         private void buttonAdicionarOrcamento_Click(object sender, EventArgs e)
         {
             // Valida os campos do formulário.
@@ -141,23 +140,7 @@ namespace iShopping.Views
             LimparCampos();
         }
 
-
-        // Atualiza a ListBox para mostrar o novo orçamento.
-        private void AtualizarLista()
-        {
-            listBoxOrcamentos.DataSource = null;
-            listBoxOrcamentos.DataSource = orcamentoController.ObterTodos();
-        }
-        // Limpa os campos depois de gravar.
-        private void LimparCampos()
-        {
-            textBoxMes.Clear();
-            textBoxAno.Clear();
-            textBoxValor.Clear();
-
-            listBoxOrcamentos.ClearSelected();
-            textBoxMes.Focus();
-        }
+        
 
         private void buttonEditarOrcamento_Click(object sender, EventArgs e)
         {
@@ -167,14 +150,13 @@ namespace iShopping.Views
                     return;
 
                 // Verifica se ao alterar o mês/ano, não vai colidir com outro orçamento já existente
-
                 if (orcamentoController.ExisteOutroOrcamentoMensal(orcamentoSelecionado.Id, mes, ano))
                 {
                     MessageBox.Show("Já existe outro orçamento registado para esse mês e ano.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Atualiza os dados
+                // Atualiza os dados do orçamento
                 orcamentoSelecionado.Mes = mes;
                 orcamentoSelecionado.Ano = ano;
                 orcamentoSelecionado.Valor = valor;
@@ -225,7 +207,27 @@ namespace iShopping.Views
             LimparCampos();
         }
 
-        
+        // Atualiza a ListBox para mostrar o novo orçamento.
+        private void AtualizarLista()
+        {
+            listBoxOrcamentos.DataSource = null;
+            listBoxOrcamentos.DataSource = orcamentoController.ObterTodos();
+
+            // Remove seleção automática da lista.
+            listBoxOrcamentos.ClearSelected();
+        }
+
+        // Limpa os campos depois de gravar, editar, eliminar ou carregar no botão limpar.
+        private void LimparCampos()
+        {
+            // Volta a colocar a data atual no DateTimePicker.
+            dateTimePickerDataOrcamento.Value = DateTime.Today;
+            textBoxValor.Clear();
+
+            listBoxOrcamentos.ClearSelected();
+            textBoxValor.Focus();
+        }
+
     }
 }
 
