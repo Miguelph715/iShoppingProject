@@ -26,9 +26,19 @@ namespace iShopping.Model
 
         public DateTime? DataAlteracao { get; set; }
 
-        public override string ToString()
+        /*public override string ToString()
         {
             return Mes + "/" + Ano + " - " + Valor.ToString("C");
+        }*/
+
+        public override string ToString()
+        {
+            string nomeMes = new DateTime(Ano, Mes, 1)
+                .ToString("MMMM", new System.Globalization.CultureInfo("pt-PT"));
+
+            nomeMes = char.ToUpper(nomeMes[0]) + nomeMes.Substring(1);
+
+            return nomeMes + " - " + Ano + " - " + Valor.ToString("C");
         }
     }
 }
