@@ -194,10 +194,8 @@ namespace iShopping.Views
             {
                 MessageBox.Show("Por favor, selecione um orçamento na lista para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-
-
         }
+
 
         private void buttonEliminarOrcamento_Click(object sender, EventArgs e)
         {
@@ -230,3 +228,4 @@ namespace iShopping.Views
         
     }
 }
+

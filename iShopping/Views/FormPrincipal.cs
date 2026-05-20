@@ -31,7 +31,7 @@ namespace iShopping
                 return;
             }*/
 
-            FormModoCompra form = new FormModoCompra();
+            FormModoCompra form = new FormModoCompra(1);
             form.ShowDialog();
         }
 
@@ -72,7 +72,7 @@ namespace iShopping
 
         private void buttonModoCompra_Click(object sender, EventArgs e)
         {
-            FormModoCompra formModoCompra = new FormModoCompra();
+            FormModoCompra formModoCompra = new FormModoCompra(1);
             formModoCompra.ShowDialog();
         }
 

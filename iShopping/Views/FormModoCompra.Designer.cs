@@ -47,6 +47,10 @@
             this.buttonFecharCompra = new System.Windows.Forms.Button();
             this.buttonVoltar = new System.Windows.Forms.Button();
             this.buttonNaoPrevisto = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblNomeCompra = new System.Windows.Forms.Label();
+            this.lblOrcamentoValor = new System.Windows.Forms.Label();
+            this.lblQuantidadePrevista = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +58,7 @@
             // labelCompra
             // 
             this.labelCompra.AutoSize = true;
-            this.labelCompra.Location = new System.Drawing.Point(29, 37);
+            this.labelCompra.Location = new System.Drawing.Point(49, 66);
             this.labelCompra.Name = "labelCompra";
             this.labelCompra.Size = new System.Drawing.Size(69, 20);
             this.labelCompra.TabIndex = 0;
@@ -63,7 +67,7 @@
             // labelOrcamento
             // 
             this.labelOrcamento.AutoSize = true;
-            this.labelOrcamento.Location = new System.Drawing.Point(29, 81);
+            this.labelOrcamento.Location = new System.Drawing.Point(49, 110);
             this.labelOrcamento.Name = "labelOrcamento";
             this.labelOrcamento.Size = new System.Drawing.Size(168, 20);
             this.labelOrcamento.TabIndex = 1;
@@ -72,7 +76,7 @@
             // labelObservacoes
             // 
             this.labelObservacoes.AutoSize = true;
-            this.labelObservacoes.Location = new System.Drawing.Point(33, 309);
+            this.labelObservacoes.Location = new System.Drawing.Point(389, 63);
             this.labelObservacoes.Name = "labelObservacoes";
             this.labelObservacoes.Size = new System.Drawing.Size(106, 20);
             this.labelObservacoes.TabIndex = 2;
@@ -81,7 +85,7 @@
             // labelPrecoUnitario
             // 
             this.labelPrecoUnitario.AutoSize = true;
-            this.labelPrecoUnitario.Location = new System.Drawing.Point(29, 265);
+            this.labelPrecoUnitario.Location = new System.Drawing.Point(49, 294);
             this.labelPrecoUnitario.Name = "labelPrecoUnitario";
             this.labelPrecoUnitario.Size = new System.Drawing.Size(113, 20);
             this.labelPrecoUnitario.TabIndex = 3;
@@ -90,7 +94,7 @@
             // labelQuantidadeAdquirida
             // 
             this.labelQuantidadeAdquirida.AutoSize = true;
-            this.labelQuantidadeAdquirida.Location = new System.Drawing.Point(29, 223);
+            this.labelQuantidadeAdquirida.Location = new System.Drawing.Point(49, 252);
             this.labelQuantidadeAdquirida.Name = "labelQuantidadeAdquirida";
             this.labelQuantidadeAdquirida.Size = new System.Drawing.Size(167, 20);
             this.labelQuantidadeAdquirida.TabIndex = 4;
@@ -99,7 +103,7 @@
             // labelArtigo
             // 
             this.labelArtigo.AutoSize = true;
-            this.labelArtigo.Location = new System.Drawing.Point(29, 190);
+            this.labelArtigo.Location = new System.Drawing.Point(49, 219);
             this.labelArtigo.Name = "labelArtigo";
             this.labelArtigo.Size = new System.Drawing.Size(55, 20);
             this.labelArtigo.TabIndex = 5;
@@ -108,7 +112,7 @@
             // labelTipoArtigo
             // 
             this.labelTipoArtigo.AutoSize = true;
-            this.labelTipoArtigo.Location = new System.Drawing.Point(29, 147);
+            this.labelTipoArtigo.Location = new System.Drawing.Point(49, 176);
             this.labelTipoArtigo.Name = "labelTipoArtigo";
             this.labelTipoArtigo.Size = new System.Drawing.Size(111, 20);
             this.labelTipoArtigo.TabIndex = 6;
@@ -117,7 +121,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(202, 147);
+            this.comboBox1.Location = new System.Drawing.Point(222, 176);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 7;
@@ -125,37 +129,39 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(202, 187);
+            this.comboBox2.Location = new System.Drawing.Point(222, 216);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 28);
             this.comboBox2.TabIndex = 8;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(202, 309);
+            this.textBox1.Location = new System.Drawing.Point(393, 86);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 26);
+            this.textBox1.Size = new System.Drawing.Size(421, 74);
             this.textBox1.TabIndex = 9;
             // 
             // listBoxItensCompra
             // 
             this.listBoxItensCompra.FormattingEnabled = true;
             this.listBoxItensCompra.ItemHeight = 20;
-            this.listBoxItensCompra.Location = new System.Drawing.Point(37, 486);
+            this.listBoxItensCompra.Location = new System.Drawing.Point(393, 200);
             this.listBoxItensCompra.Name = "listBoxItensCompra";
-            this.listBoxItensCompra.Size = new System.Drawing.Size(216, 164);
+            this.listBoxItensCompra.Size = new System.Drawing.Size(421, 244);
             this.listBoxItensCompra.TabIndex = 10;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(202, 226);
+            this.numericUpDown1.Location = new System.Drawing.Point(222, 255);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 26);
             this.numericUpDown1.TabIndex = 11;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(202, 265);
+            this.numericUpDown2.DecimalPlaces = 2;
+            this.numericUpDown2.Location = new System.Drawing.Point(222, 294);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(120, 26);
             this.numericUpDown2.TabIndex = 12;
@@ -163,7 +169,7 @@
             // labelItensCompra
             // 
             this.labelItensCompra.AutoSize = true;
-            this.labelItensCompra.Location = new System.Drawing.Point(29, 454);
+            this.labelItensCompra.Location = new System.Drawing.Point(389, 177);
             this.labelItensCompra.Name = "labelItensCompra";
             this.labelItensCompra.Size = new System.Drawing.Size(131, 20);
             this.labelItensCompra.TabIndex = 13;
@@ -171,16 +177,17 @@
             // 
             // buttonMarcarAdquirido
             // 
-            this.buttonMarcarAdquirido.Location = new System.Drawing.Point(37, 355);
+            this.buttonMarcarAdquirido.Location = new System.Drawing.Point(393, 460);
             this.buttonMarcarAdquirido.Name = "buttonMarcarAdquirido";
             this.buttonMarcarAdquirido.Size = new System.Drawing.Size(188, 43);
             this.buttonMarcarAdquirido.TabIndex = 14;
             this.buttonMarcarAdquirido.Text = "Marcar como Adquirido";
             this.buttonMarcarAdquirido.UseVisualStyleBackColor = true;
+            this.buttonMarcarAdquirido.Click += new System.EventHandler(this.buttonMarcarAdquirido_Click);
             // 
             // buttonLimpar
             // 
-            this.buttonLimpar.Location = new System.Drawing.Point(432, 169);
+            this.buttonLimpar.Location = new System.Drawing.Point(53, 333);
             this.buttonLimpar.Name = "buttonLimpar";
             this.buttonLimpar.Size = new System.Drawing.Size(87, 41);
             this.buttonLimpar.TabIndex = 15;
@@ -189,7 +196,7 @@
             // 
             // buttonFecharCompra
             // 
-            this.buttonFecharCompra.Location = new System.Drawing.Point(37, 656);
+            this.buttonFecharCompra.Location = new System.Drawing.Point(654, 520);
             this.buttonFecharCompra.Name = "buttonFecharCompra";
             this.buttonFecharCompra.Size = new System.Drawing.Size(160, 53);
             this.buttonFecharCompra.TabIndex = 16;
@@ -198,27 +205,66 @@
             // 
             // buttonVoltar
             // 
-            this.buttonVoltar.Location = new System.Drawing.Point(218, 656);
+            this.buttonVoltar.Location = new System.Drawing.Point(222, 333);
             this.buttonVoltar.Name = "buttonVoltar";
-            this.buttonVoltar.Size = new System.Drawing.Size(137, 53);
+            this.buttonVoltar.Size = new System.Drawing.Size(120, 41);
             this.buttonVoltar.TabIndex = 17;
             this.buttonVoltar.Text = "Voltar";
             this.buttonVoltar.UseVisualStyleBackColor = true;
             // 
             // buttonNaoPrevisto
             // 
-            this.buttonNaoPrevisto.Location = new System.Drawing.Point(37, 404);
+            this.buttonNaoPrevisto.Location = new System.Drawing.Point(626, 460);
             this.buttonNaoPrevisto.Name = "buttonNaoPrevisto";
-            this.buttonNaoPrevisto.Size = new System.Drawing.Size(188, 47);
+            this.buttonNaoPrevisto.Size = new System.Drawing.Size(188, 43);
             this.buttonNaoPrevisto.TabIndex = 21;
             this.buttonNaoPrevisto.Text = "Adicionar Não Previsto";
             this.buttonNaoPrevisto.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(124, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.TabIndex = 22;
+            // 
+            // lblNomeCompra
+            // 
+            this.lblNomeCompra.AutoSize = true;
+            this.lblNomeCompra.Location = new System.Drawing.Point(124, 66);
+            this.lblNomeCompra.Name = "lblNomeCompra";
+            this.lblNomeCompra.Size = new System.Drawing.Size(74, 20);
+            this.lblNomeCompra.TabIndex = 23;
+            this.lblNomeCompra.Text = "compra...";
+            // 
+            // lblOrcamentoValor
+            // 
+            this.lblOrcamentoValor.AutoSize = true;
+            this.lblOrcamentoValor.Location = new System.Drawing.Point(218, 110);
+            this.lblOrcamentoValor.Name = "lblOrcamentoValor";
+            this.lblOrcamentoValor.Size = new System.Drawing.Size(97, 20);
+            this.lblOrcamentoValor.TabIndex = 24;
+            this.lblOrcamentoValor.Text = "orçamento...";
+            // 
+            // lblQuantidadePrevista
+            // 
+            this.lblQuantidadePrevista.AutoSize = true;
+            this.lblQuantidadePrevista.Location = new System.Drawing.Point(622, 176);
+            this.lblQuantidadePrevista.Name = "lblQuantidadePrevista";
+            this.lblQuantidadePrevista.Size = new System.Drawing.Size(155, 20);
+            this.lblQuantidadePrevista.TabIndex = 25;
+            this.lblQuantidadePrevista.Text = "Quantidade prevista:";
             // 
             // FormModoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 741);
+            this.ClientSize = new System.Drawing.Size(1096, 662);
+            this.Controls.Add(this.lblQuantidadePrevista);
+            this.Controls.Add(this.lblOrcamentoValor);
+            this.Controls.Add(this.lblNomeCompra);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonNaoPrevisto);
             this.Controls.Add(this.buttonVoltar);
             this.Controls.Add(this.buttonFecharCompra);
@@ -268,5 +314,9 @@
         private System.Windows.Forms.Button buttonFecharCompra;
         private System.Windows.Forms.Button buttonVoltar;
         private System.Windows.Forms.Button buttonNaoPrevisto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNomeCompra;
+        private System.Windows.Forms.Label lblOrcamentoValor;
+        private System.Windows.Forms.Label lblQuantidadePrevista;
     }
 }

@@ -103,6 +103,7 @@
             this.buttonEliminarOrcamento.Text = "Eliminar";
             this.buttonEliminarOrcamento.UseVisualStyleBackColor = true;
             this.buttonEliminarOrcamento.BackgroundImageLayoutChanged += new System.EventHandler(this.buttonEliminarOrcamento_Click);
+            this.buttonEliminarOrcamento.Click += new System.EventHandler(this.buttonEliminarOrcamento_Click);
             // 
             // labelMes
             // 

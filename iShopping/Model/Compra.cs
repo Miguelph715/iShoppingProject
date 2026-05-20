@@ -22,6 +22,11 @@ namespace iShopping.Model
         public int CriadoPorId { get; set; }
         public virtual Utilizador CriadoPor { get; set; }
 
+        public int? AlteradoPorId { get; set; }
+        public virtual Utilizador AlteradoPor { get; set; }
+
+        public DateTime? DataAlteracao { get; set; }
+
         public int? FechadoPorId { get; set; }
         public virtual Utilizador FechadoPor { get; set; }
 
