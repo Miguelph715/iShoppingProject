@@ -18,6 +18,12 @@ namespace iShopping.Views
         private void FormGestaoTiposArtigo_Load(object sender, EventArgs e)
         {
             AtualizarLista();
+
+            // Garante que, ao abrir o formulário, não fica nenhum item selecionado
+            listBoxTiposArtigos.SelectedIndex = -1;
+
+            // Garante que a TextBox abre vazia
+            textBoxNomeArtigo.Clear();
         }
 
         private void AtualizarLista()
@@ -33,7 +39,6 @@ namespace iShopping.Views
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxNomeArtigo.Text))
@@ -55,14 +60,22 @@ namespace iShopping.Views
                 MessageBox.Show("Tipo de Artigo adicionado com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LimparCampos();
+
+                // Atualiza a lista com o novo tipo criado
                 AtualizarLista();
+                // Remove a seleção automática da ListBox
+                listBoxTiposArtigos.ClearSelected();
+                // Limpa a TextBox depois de atualizar a lista
+                textBoxNomeArtigo.Clear();
+                // Coloca o cursor novamente na TextBox
+                textBoxNomeArtigo.Focus();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void listBoxTiposArtigos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -157,6 +170,7 @@ namespace iShopping.Views
         {
             textBoxNomeArtigo.Clear();
             listBoxTiposArtigos.ClearSelected();
+            textBoxNomeArtigo.Focus();
         }
     }
 }

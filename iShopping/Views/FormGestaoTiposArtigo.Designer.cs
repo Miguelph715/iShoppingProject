@@ -43,9 +43,9 @@
             this.labelTituloTipoArtigo.AutoSize = true;
             this.labelTituloTipoArtigo.Location = new System.Drawing.Point(48, 46);
             this.labelTituloTipoArtigo.Name = "labelTituloTipoArtigo";
-            this.labelTituloTipoArtigo.Size = new System.Drawing.Size(123, 20);
+            this.labelTituloTipoArtigo.Size = new System.Drawing.Size(179, 20);
             this.labelTituloTipoArtigo.TabIndex = 0;
-            this.labelTituloTipoArtigo.Text = "Nome do Artigo:";
+            this.labelTituloTipoArtigo.Text = "Nome do Tipo de Artigo:";
             // 
             // buttonAdicionar
             // 
@@ -98,9 +98,9 @@
             // 
             // textBoxNomeArtigo
             // 
-            this.textBoxNomeArtigo.Location = new System.Drawing.Point(196, 46);
+            this.textBoxNomeArtigo.Location = new System.Drawing.Point(233, 46);
             this.textBoxNomeArtigo.Name = "textBoxNomeArtigo";
-            this.textBoxNomeArtigo.Size = new System.Drawing.Size(128, 26);
+            this.textBoxNomeArtigo.Size = new System.Drawing.Size(191, 26);
             this.textBoxNomeArtigo.TabIndex = 6;
             // 
             // listBoxTiposArtigos
