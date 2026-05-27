@@ -4,6 +4,7 @@ using iShopping.Views;
 using System;
 using System.Windows.Forms;
 
+
 namespace iShopping
 {
     public partial class FormPrincipal : Form
@@ -42,9 +43,9 @@ namespace iShopping
         {
             if (listBoxComprasAbertas.SelectedItem is Compra compraSelecionada)
             {
-                FormModoCompra form = new FormModoCompra(compraSelecionada.Id);
+                FormPlanearCompra form = new FormPlanearCompra(compraSelecionada.Id);
                 form.ShowDialog();
-                CarregarComprasAbertas(); // Atualiza lista após regressar
+                CarregarComprasAbertas(); 
             }
             else
             {
@@ -91,8 +92,9 @@ namespace iShopping
             CarregarComprasAbertas(); // Atualiza após voltar do planeamento
         }
 
-        private void buttonPlanearCompra_Click(object sender, EventArgs e)
+        private void buttonModoCompra_Click(object sender, EventArgs e)
         {
+
                 FormCriarEditarCompraPlaneada formCriarEditarCompraPlaneada = new FormCriarEditarCompraPlaneada();
                 formCriarEditarCompraPlaneada.ShowDialog();
                 CarregarComprasAbertas();
@@ -118,6 +120,16 @@ namespace iShopping
             formGestaoArtigos.ShowDialog();
         }
 
-        
+        private void buttonModoCompra_Click_1(object sender, EventArgs e)
+        {
+            FormCriarEditarCompraPlaneada formCriarEditarCompraPlaneada = new FormCriarEditarCompraPlaneada();
+            formCriarEditarCompraPlaneada.ShowDialog();
+        }
+
+        private void estadoDaCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPlaneamentoCompras formPlaneamentoCompras = new FormPlaneamentoCompras();
+            formPlaneamentoCompras.ShowDialog();
+        }
     }
 }

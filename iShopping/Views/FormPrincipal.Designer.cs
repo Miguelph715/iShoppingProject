@@ -115,8 +115,9 @@
             // estadoDaCompraToolStripMenuItem
             // 
             this.estadoDaCompraToolStripMenuItem.Name = "estadoDaCompraToolStripMenuItem";
-            this.estadoDaCompraToolStripMenuItem.Size = new System.Drawing.Size(262, 34);
+            this.estadoDaCompraToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.estadoDaCompraToolStripMenuItem.Text = "Estado da Compra";
+            this.estadoDaCompraToolStripMenuItem.Click += new System.EventHandler(this.estadoDaCompraToolStripMenuItem_Click);
             // 
             // estatísticasToolStripMenuItem
             // 
@@ -217,7 +218,7 @@
             this.buttonModoCompra.TabIndex = 1;
             this.buttonModoCompra.Text = "Compra Planeada";
             this.buttonModoCompra.UseVisualStyleBackColor = true;
-            this.buttonModoCompra.Click += new System.EventHandler(this.buttonPlanearCompra_Click);
+            this.buttonModoCompra.Click += new System.EventHandler(this.buttonModoCompra_Click_1);
             // 
             // buttonPlaneamento
             // 
