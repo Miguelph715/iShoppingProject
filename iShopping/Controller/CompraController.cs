@@ -197,5 +197,26 @@ namespace iShopping.Controller
                 throw new Exception("Erro ao processar o orçamento disponível: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Obtém todas as compras que ainda não foram fechadas (em aberto).
+        /// </summary>
+        public List<Compra> ObterComprasAbertas()
+        {
+            try
+            {
+                using (var context = new iShoppingContext())
+                {
+                    return context.Compras
+                        .Include(c => c.CriadoPor)
+                        .Where(c => c.Fechada == false)
+                        .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao obter compras em aberto: " + ex.Message);
+            }
+        }
     }
 }

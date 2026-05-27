@@ -110,7 +110,7 @@
             this.buttonEditarItem.TabIndex = 7;
             this.buttonEditarItem.Text = "Editar Item";
             this.buttonEditarItem.UseVisualStyleBackColor = true;
-            this.buttonEditarItem.Click += new System.EventHandler(this.buttonEditarItem_Click);
+            this.buttonEditarItem.Click += new System.EventHandler(this.FormCriarEditarCompraPlaneada_Load);
             // 
             // buttonEliminarItem
             // 
@@ -120,6 +120,7 @@
             this.buttonEliminarItem.TabIndex = 8;
             this.buttonEliminarItem.Text = "Eliminar Item";
             this.buttonEliminarItem.UseVisualStyleBackColor = true;
+            this.buttonEliminarItem.Click += new System.EventHandler(this.buttonRemoverItem_Click);
             // 
             // buttonLimpar
             // 
@@ -138,6 +139,7 @@
             this.buttonGuardarCompra.TabIndex = 10;
             this.buttonGuardarCompra.Text = "Guardar Compra";
             this.buttonGuardarCompra.UseVisualStyleBackColor = true;
+            this.buttonGuardarCompra.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonVoltar
             // 
@@ -172,6 +174,7 @@
             this.comboBoxTipoArtigo.Name = "comboBoxTipoArtigo";
             this.comboBoxTipoArtigo.Size = new System.Drawing.Size(136, 28);
             this.comboBoxTipoArtigo.TabIndex = 15;
+            this.comboBoxTipoArtigo.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoArtigo_SelectedIndexChanged);
             // 
             // textBoxNomeCompra
             // 
@@ -210,6 +213,7 @@
             this.Controls.Add(this.labelNomeCompra);
             this.Name = "FormCriarEditarCompraPlaneada";
             this.Text = "FormCriarEditarCompraPlaneada";
+            this.Activated += new System.EventHandler(this.FormCriarEditarCompraPlaneada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantidadePrevista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

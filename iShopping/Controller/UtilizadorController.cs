@@ -14,6 +14,8 @@ namespace iShopping.Controller
         // independentemente do formulário onde estejas.
         public static int? UtilizadorLogadoId { get; private set; }
 
+        public static string NomeUtilizadorLogado { get; private set; }
+
         // 2. Método para Registar um Utilizador
         // Retorna 'true' se sucesso, ou 'false' se falhar (e preenche a mensagem de erro)
         public bool RegistarUtilizador(string username, string password, out string mensagemErro)
@@ -60,6 +62,7 @@ namespace iShopping.Controller
                 {
                     // Sucesso! Guardamos o Id do utilizador na variável estática
                     UtilizadorLogadoId = utilizador.Id;
+                    NomeUtilizadorLogado = utilizador.Username;
                     return true;
                 }
 
@@ -72,6 +75,7 @@ namespace iShopping.Controller
         public void FazerLogout()
         {
             UtilizadorLogadoId = null;
+            NomeUtilizadorLogado = null;
         }
     }
 }
