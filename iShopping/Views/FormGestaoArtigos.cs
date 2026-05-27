@@ -24,6 +24,7 @@ namespace iShopping.Views
             {
                 CarregarCombos();
                 AtualizarLista();
+                LimparCampos();
             }
             catch (Exception ex)
             {
@@ -55,7 +56,7 @@ namespace iShopping.Views
             }
         }
 
-        private void AtualizarLista()
+        /*private void AtualizarLista()
         {
             try
             {
@@ -73,6 +74,52 @@ namespace iShopping.Views
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }*/
+
+        private void AtualizarLista()
+        {
+            try
+            {
+                // Impede que a ListBox preencha automaticamente os campos durante a atualização
+                listBoxArtigos.SelectedIndexChanged -= listBoxArtigos_SelectedIndexChanged;
+
+                listBoxArtigos.DataSource = null;
+
+                int tipoIdSelecionado = 0;
+
+                if (comboBoxFiltroTipo.SelectedValue != null)
+                {
+                    int.TryParse(comboBoxFiltroTipo.SelectedValue.ToString(), out tipoIdSelecionado);
+                }
+
+                if (tipoIdSelecionado > 0)
+                {
+                    // Mostra apenas os artigos do tipo selecionado
+                    listBoxArtigos.DataSource = artigoController.ObterPorTipo(tipoIdSelecionado);
+                }
+                else
+                {
+                    // Quando está selecionado "Todos", mostra todos os artigos
+                    listBoxArtigos.DataSource = artigoController.ObterTodos();
+                }
+
+                listBoxArtigos.DisplayMember = "Nome";
+
+                // Remove qualquer seleção automática
+                listBoxArtigos.ClearSelected();
+                // Garante que os campos continuam vazios
+                textBoxNomeArtigo.Clear();
+                comboBoxTipoArtigo.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Volta a ligar o evento para quando clicares manualmente num artigo
+                listBoxArtigos.SelectedIndexChanged += listBoxArtigos_SelectedIndexChanged;
             }
         }
 
@@ -97,6 +144,8 @@ namespace iShopping.Views
             }
         }
 
+
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxNomeArtigo.Text) || comboBoxTipoArtigo.SelectedValue == null)
@@ -119,8 +168,8 @@ namespace iShopping.Views
                 MessageBox.Show("Artigo adicionado com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LimparCampos();
                 AtualizarLista();
+                LimparCampos();
             }
             catch (Exception ex)
             {
@@ -205,11 +254,13 @@ namespace iShopping.Views
         private void LimparCampos()
         {
             textBoxNomeArtigo.Clear();
-            if (comboBoxTipoArtigo.Items.Count > 0) comboBoxTipoArtigo.SelectedIndex = 0;
+
+            // Deixa a ComboBox "Tipo de Artigo" vazia
+            comboBoxTipoArtigo.SelectedIndex = -1;
+            // Remove seleção da ListBox
             listBoxArtigos.ClearSelected();
+            textBoxNomeArtigo.Focus();
         }
 
     }
 }
-
-

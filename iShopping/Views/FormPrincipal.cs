@@ -91,7 +91,7 @@ namespace iShopping
             CarregarComprasAbertas(); // Atualiza após voltar do planeamento
         }
 
-        private void buttonModoCompra_Click(object sender, EventArgs e)
+        private void buttonPlanearCompra_Click(object sender, EventArgs e)
         {
                 FormCriarEditarCompraPlaneada formCriarEditarCompraPlaneada = new FormCriarEditarCompraPlaneada();
                 formCriarEditarCompraPlaneada.ShowDialog();

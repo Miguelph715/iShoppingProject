@@ -217,7 +217,7 @@
             this.buttonModoCompra.TabIndex = 1;
             this.buttonModoCompra.Text = "Compra Planeada";
             this.buttonModoCompra.UseVisualStyleBackColor = true;
-            this.buttonModoCompra.Click += new System.EventHandler(this.buttonModoCompra_Click);
+            this.buttonModoCompra.Click += new System.EventHandler(this.buttonPlanearCompra_Click);
             // 
             // buttonPlaneamento
             // 

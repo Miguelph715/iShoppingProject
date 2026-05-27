@@ -1,6 +1,6 @@
 ﻿namespace iShopping.Views
 {
-    partial class FormModoCompra
+    partial class FormPlanearCompra
     {
         /// <summary>
         /// Required designer variable.
@@ -284,8 +284,8 @@
             this.Controls.Add(this.labelObservacoes);
             this.Controls.Add(this.labelOrcamento);
             this.Controls.Add(this.labelCompra);
-            this.Name = "FormModoCompra";
-            this.Text = "FormModoCompra";
+            this.Name = "FormPlanearCompra";
+            this.Text = "FormPlanearCompra";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
