@@ -42,5 +42,19 @@ namespace iShopping.Views
                 MessageBox.Show(erro, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void buttonHideShow_Click(object sender, EventArgs e)
+        {
+            if (textBoxPassword.UseSystemPasswordChar)// Verifica se a password está atualmente oculta pelo asterisco
+            {
+                textBoxPassword.UseSystemPasswordChar = false;// Ao definir como '\0' (caractere nulo), a TextBox passa a mostrar o texto real
+                buttonHideShow.Text = "Ocultar"; // Muda o texto do botão
+            }
+            else
+            {
+                textBoxPassword.UseSystemPasswordChar = true; // Volta a colocar o asterisco para ocultar o texto
+                buttonHideShow.Text = "Mostrar"; // Muda o texto do botão 
+            }
+        }
     }
 }
