@@ -46,14 +46,14 @@ namespace iShopping.Views
         private void buttonHideShow_Click(object sender, EventArgs e)
         {
 
-            if (textBoxPassword.PasswordChar == '*')// Verifica se a password está atualmente oculta pelo asterisco
+            if (textBoxPassword.UseSystemPasswordChar)// Verifica se a password está atualmente oculta pelo asterisco
             {
-                textBoxPassword.PasswordChar = '\0';// Ao definir como '\0' (caractere nulo), a TextBox passa a mostrar o texto real
+                textBoxPassword.UseSystemPasswordChar = false;// Ao definir como false, a TextBox passa a mostrar o texto real
                 buttonHideShow.Text = "Ocultar"; // Muda o texto do botão
             }
             else
             {
-                textBoxPassword.PasswordChar = '*'; // Volta a colocar o asterisco para ocultar o texto
+                textBoxPassword.UseSystemPasswordChar = true; // Volta a colocar o asterisco para ocultar o texto
                 buttonHideShow.Text = "Mostrar"; // Muda o texto do botão 
             }
         }
