@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace iShopping.Views
 {
-    public partial class FormPlanearCompra : Form
+    public partial class FormPlaneamentoCompra : Form
     {
         private int compraIdAtual;
         private CompraController compraController;
@@ -15,7 +15,7 @@ namespace iShopping.Views
         private Compra compraAtual;
 
         // 1. ALTERAÇÃO IMPORTANTE: O construtor tem de receber o ID da compra selecionada no Planeamento!
-        public FormPlanearCompra(int compraId)
+        public FormPlaneamentoCompra(int compraId)
         {
             InitializeComponent();
 
@@ -337,5 +337,6 @@ namespace iShopping.Views
             textBox1.Clear();
             listBoxItensCompra.ClearSelected();
         }
+
     }
 }

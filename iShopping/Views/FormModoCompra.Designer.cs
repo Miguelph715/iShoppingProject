@@ -1,6 +1,6 @@
 ﻿namespace iShopping.Views
 {
-    partial class FormPlanearCompra
+    partial class FormPlaneamentoCompra
     {
         /// <summary>
         /// Required designer variable.
@@ -256,7 +256,7 @@
             this.lblQuantidadePrevista.TabIndex = 25;
             this.lblQuantidadePrevista.Text = "Quantidade prevista:";
             // 
-            // FormModoCompra
+            // FormPlaneamentoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -284,8 +284,8 @@
             this.Controls.Add(this.labelObservacoes);
             this.Controls.Add(this.labelOrcamento);
             this.Controls.Add(this.labelCompra);
-            this.Name = "FormPlanearCompra";
-            this.Text = "FormPlanearCompra";
+            this.Name = "FormPlaneamentoCompra";
+            this.Text = "FormPlaneamentoCompra";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
