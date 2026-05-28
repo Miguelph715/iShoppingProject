@@ -4,7 +4,6 @@ using iShopping.Views;
 using System;
 using System.Windows.Forms;
 
-
 namespace iShopping
 {
     public partial class FormPrincipal : Form
@@ -21,7 +20,7 @@ namespace iShopping
         {
             CarregarComprasAbertas();
 
-            // Mostra o utilizador logado no label
+            // Mostra o utilizador logado no label (Assumindo que tens a classe UtilizadorController configurada)
             labelUtilizador.Text = "Utilizador: " + UtilizadorController.NomeUtilizadorLogado;
         }
 
@@ -31,6 +30,8 @@ namespace iShopping
             {
                 listBoxComprasAbertas.DataSource = null;
                 listBoxComprasAbertas.DataSource = _compraController.ObterComprasAbertas();
+
+                // Vai usar o ToString() que criaste na classe Compra
                 listBoxComprasAbertas.DisplayMember = "NomeCompra";
             }
             catch (Exception ex)
@@ -39,13 +40,19 @@ namespace iShopping
             }
         }
 
+        // ==========================================
+        // BOTÃO DA LISTBOX: ABRIR MODO COMPRA
+        // ==========================================
         private void buttonAbrirModoCompra_Click(object sender, EventArgs e)
         {
             if (listBoxComprasAbertas.SelectedItem is Compra compraSelecionada)
             {
-                FormPlanearCompra form = new FormPlanearCompra(compraSelecionada.Id);
+                // NOTA: Certifica-te que o FormPlanearCompra é o teu formulário de "ir às compras no supermercado"
+                FormPlaneamentoCompra form = new FormPlaneamentoCompra(compraSelecionada.Id);
                 form.ShowDialog();
-                CarregarComprasAbertas(); 
+
+                // Atualiza a lista quando a janela fechar (caso a compra tenha sido fechada)
+                CarregarComprasAbertas();
             }
             else
             {
@@ -54,7 +61,9 @@ namespace iShopping
             }
         }
 
-        // Ligação Buttons ToolStrip
+        // ==========================================
+        // MENU DE TOPO (MenuStrip)
+        // ==========================================
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -62,8 +71,11 @@ namespace iShopping
 
         private void artigosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormGestaoArtigos formGestaoArtigos = new FormGestaoArtigos();
-            formGestaoArtigos.ShowDialog();
+            // Este menu no design tem o texto "Compras" mas chama-se artigosToolStripMenuItem
+            // Ajusta para o Form de Gestão de Compras (ou planeamento) que desejares
+            FormCriarEditarCompraPlaneada formPlaneamento = new FormCriarEditarCompraPlaneada();
+            formPlaneamento.ShowDialog();
+            CarregarComprasAbertas();
         }
 
         private void tipoDeArtigosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,22 +96,24 @@ namespace iShopping
             formEstatisticas.ShowDialog();
         }
 
-        // Ligação Buttons Acesso Rápido
-        private void buttonPlaneamento_Click(object sender, EventArgs e)
+        // ==========================================
+        // BOTÕES DE ACESSO RÁPIDO
+        // ==========================================
+        private void buttonCompra_Click(object sender, EventArgs e)
         {
-            FormPlaneamentoCompras formPlaneamentoCompras = new FormPlaneamentoCompras();
-            formPlaneamentoCompras.ShowDialog();
-            CarregarComprasAbertas(); // Atualiza após voltar do planeamento
+            // Aqui podes abrir a Gestão de Compras (lista geral) ou criar uma nova
+            // Criei a ligação que tinhas comentado
+           // FormPlaneamentoCompra formPlaneamentoCompra = new FormPlaneamentoCompra();
+            //formPlaneamentoCompra.ShowDialog();
+           // CarregarComprasAbertas();
         }
 
-        private void buttonModoCompra_Click(object sender, EventArgs e)
+        private void buttonModoCompra_Click_1(object sender, EventArgs e)
         {
-
-                FormCriarEditarCompraPlaneada formCriarEditarCompraPlaneada = new FormCriarEditarCompraPlaneada();
-                formCriarEditarCompraPlaneada.ShowDialog();
-                CarregarComprasAbertas();
-            
-            
+            // No design, este botão tem o texto "Compra Planeada"
+            FormCriarEditarCompraPlaneada formCriarEditarCompraPlaneada = new FormCriarEditarCompraPlaneada();
+            formCriarEditarCompraPlaneada.ShowDialog();
+            CarregarComprasAbertas();
         }
 
         private void buttonArtigos_Click(object sender, EventArgs e)
@@ -112,24 +126,6 @@ namespace iShopping
         {
             FormGestaoOrcamentos formGestaoOrcamentos = new FormGestaoOrcamentos();
             formGestaoOrcamentos.ShowDialog();
-        }
-
-        private void artigosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            FormGestaoArtigos formGestaoArtigos = new FormGestaoArtigos();
-            formGestaoArtigos.ShowDialog();
-        }
-
-        private void buttonModoCompra_Click_1(object sender, EventArgs e)
-        {
-            FormCriarEditarCompraPlaneada formCriarEditarCompraPlaneada = new FormCriarEditarCompraPlaneada();
-            formCriarEditarCompraPlaneada.ShowDialog();
-        }
-
-        private void estadoDaCompraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormPlaneamentoCompras formPlaneamentoCompras = new FormPlaneamentoCompras();
-            formPlaneamentoCompras.ShowDialog();
         }
     }
 }
