@@ -48,7 +48,7 @@ namespace iShopping
             if (listBoxComprasAbertas.SelectedItem is Compra compraSelecionada)
             {
                 // NOTA: Certifica-te que o FormPlanearCompra é o teu formulário de "ir às compras no supermercado"
-                FormPlaneamentoCompra form = new FormPlaneamentoCompra(compraSelecionada.Id);
+                FormModoCompra form = new FormModoCompra(compraSelecionada.Id);
                 form.ShowDialog();
 
                 // Atualiza a lista quando a janela fechar (caso a compra tenha sido fechada)
@@ -103,9 +103,9 @@ namespace iShopping
         {
             // Aqui podes abrir a Gestão de Compras (lista geral) ou criar uma nova
             // Criei a ligação que tinhas comentado
-           // FormPlaneamentoCompra formPlaneamentoCompra = new FormPlaneamentoCompra();
-            //formPlaneamentoCompra.ShowDialog();
-           // CarregarComprasAbertas();
+             FormPlaneamentoCompras formPlaneamentoCompras = new FormPlaneamentoCompras();
+             formPlaneamentoCompras.ShowDialog();
+            // CarregarComprasAbertas();
         }
 
         private void buttonModoCompra_Click_1(object sender, EventArgs e)
