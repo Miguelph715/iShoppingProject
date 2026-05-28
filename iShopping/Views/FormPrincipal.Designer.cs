@@ -32,10 +32,8 @@
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.geralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilizadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.artigosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tipoDeArtigosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estadoDaCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estatísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelTítulo = new System.Windows.Forms.Label();
             this.labelUtilizador = new System.Windows.Forms.Label();
@@ -45,7 +43,7 @@
             this.groupBoxAcessosRapidos = new System.Windows.Forms.GroupBox();
             this.buttonOrcamentos = new System.Windows.Forms.Button();
             this.buttonArtigos = new System.Windows.Forms.Button();
-            this.buttonModoCompra = new System.Windows.Forms.Button();
+            this.buttonCompraPlaneada = new System.Windows.Forms.Button();
             this.buttonCompra = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAcessosRapidos.SuspendLayout();
@@ -77,10 +75,8 @@
             // 
             this.geralToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.utilizadoresToolStripMenuItem,
-            this.artigosToolStripMenuItem,
             this.tipoDeArtigosToolStripMenuItem,
-            this.orçamentosToolStripMenuItem,
-            this.estadoDaCompraToolStripMenuItem});
+            this.orçamentosToolStripMenuItem});
             this.geralToolStripMenuItem.Name = "geralToolStripMenuItem";
             this.geralToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
             this.geralToolStripMenuItem.Text = "Gestão";
@@ -90,13 +86,6 @@
             this.utilizadoresToolStripMenuItem.Name = "utilizadoresToolStripMenuItem";
             this.utilizadoresToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.utilizadoresToolStripMenuItem.Text = "Utilizadores";
-            // 
-            // artigosToolStripMenuItem
-            // 
-            this.artigosToolStripMenuItem.Name = "artigosToolStripMenuItem";
-            this.artigosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.artigosToolStripMenuItem.Text = "Artigos";
-            this.artigosToolStripMenuItem.Click += new System.EventHandler(this.artigosToolStripMenuItem_Click);
             // 
             // tipoDeArtigosToolStripMenuItem
             // 
@@ -111,12 +100,6 @@
             this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.orçamentosToolStripMenuItem.Text = "Orçamentos";
             this.orçamentosToolStripMenuItem.Click += new System.EventHandler(this.orçamentosToolStripMenuItem_Click);
-            // 
-            // estadoDaCompraToolStripMenuItem
-            // 
-            this.estadoDaCompraToolStripMenuItem.Name = "estadoDaCompraToolStripMenuItem";
-            this.estadoDaCompraToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.estadoDaCompraToolStripMenuItem.Text = "Estado da Compra";
             // 
             // estatísticasToolStripMenuItem
             // 
@@ -176,7 +159,7 @@
             // 
             this.groupBoxAcessosRapidos.Controls.Add(this.buttonOrcamentos);
             this.groupBoxAcessosRapidos.Controls.Add(this.buttonArtigos);
-            this.groupBoxAcessosRapidos.Controls.Add(this.buttonModoCompra);
+            this.groupBoxAcessosRapidos.Controls.Add(this.buttonCompraPlaneada);
             this.groupBoxAcessosRapidos.Controls.Add(this.buttonCompra);
             this.groupBoxAcessosRapidos.Location = new System.Drawing.Point(300, 185);
             this.groupBoxAcessosRapidos.Name = "groupBoxAcessosRapidos";
@@ -208,25 +191,25 @@
             this.buttonArtigos.UseVisualStyleBackColor = true;
             this.buttonArtigos.Click += new System.EventHandler(this.buttonArtigos_Click);
             // 
-            // buttonModoCompra
+            // buttonCompraPlaneada
             // 
-            this.buttonModoCompra.Location = new System.Drawing.Point(16, 98);
-            this.buttonModoCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonModoCompra.Name = "buttonModoCompra";
-            this.buttonModoCompra.Size = new System.Drawing.Size(160, 57);
-            this.buttonModoCompra.TabIndex = 1;
-            this.buttonModoCompra.Text = "Compra Planeada";
-            this.buttonModoCompra.UseVisualStyleBackColor = true;
-            this.buttonModoCompra.Click += new System.EventHandler(this.buttonModoCompra_Click_1);
+            this.buttonCompraPlaneada.Location = new System.Drawing.Point(16, 98);
+            this.buttonCompraPlaneada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonCompraPlaneada.Name = "buttonCompraPlaneada";
+            this.buttonCompraPlaneada.Size = new System.Drawing.Size(160, 57);
+            this.buttonCompraPlaneada.TabIndex = 1;
+            this.buttonCompraPlaneada.Text = "Planear Compra";
+            this.buttonCompraPlaneada.UseVisualStyleBackColor = true;
+            this.buttonCompraPlaneada.Click += new System.EventHandler(this.buttonCompraPlaneada_Click);
             // 
             // buttonCompra
             // 
-            this.buttonCompra.Location = new System.Drawing.Point(16, 38);
+            this.buttonCompra.Location = new System.Drawing.Point(16, 29);
             this.buttonCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonCompra.Name = "buttonCompra";
-            this.buttonCompra.Size = new System.Drawing.Size(160, 51);
+            this.buttonCompra.Size = new System.Drawing.Size(160, 60);
             this.buttonCompra.TabIndex = 0;
-            this.buttonCompra.Text = "Compra";
+            this.buttonCompra.Text = "Planeamento Compras";
             this.buttonCompra.UseVisualStyleBackColor = true;
             this.buttonCompra.Click += new System.EventHandler(this.buttonCompra_Click);
             // 
@@ -266,14 +249,12 @@
         private System.Windows.Forms.GroupBox groupBoxAcessosRapidos;
         private System.Windows.Forms.Button buttonOrcamentos;
         private System.Windows.Forms.Button buttonArtigos;
-        private System.Windows.Forms.Button buttonModoCompra;
+        private System.Windows.Forms.Button buttonCompraPlaneada;
         private System.Windows.Forms.Button buttonCompra;
         private System.Windows.Forms.ToolStripMenuItem geralToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem utilizadoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem artigosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDeArtigosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orçamentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem estadoDaCompraToolStripMenuItem;
     }
 }
 

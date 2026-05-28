@@ -14,6 +14,8 @@ namespace iShopping
         {
             InitializeComponent();
             _compraController = new CompraController();
+
+            this.Load += FormPrincipal_Load;
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -61,21 +63,13 @@ namespace iShopping
             }
         }
 
+
         // ==========================================
         // MENU DE TOPO (MenuStrip)
         // ==========================================
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void artigosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Este menu no design tem o texto "Compras" mas chama-se artigosToolStripMenuItem
-            // Ajusta para o Form de Gestão de Compras (ou planeamento) que desejares
-            FormCriarEditarCompraPlaneada formPlaneamento = new FormCriarEditarCompraPlaneada();
-            formPlaneamento.ShowDialog();
-            CarregarComprasAbertas();
         }
 
         private void tipoDeArtigosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,10 +99,10 @@ namespace iShopping
             // Criei a ligação que tinhas comentado
              FormPlaneamentoCompras formPlaneamentoCompras = new FormPlaneamentoCompras();
              formPlaneamentoCompras.ShowDialog();
-            // CarregarComprasAbertas();
+             CarregarComprasAbertas();
         }
 
-        private void buttonModoCompra_Click_1(object sender, EventArgs e)
+        private void buttonCompraPlaneada_Click(object sender, EventArgs e)
         {
             // No design, este botão tem o texto "Compra Planeada"
             FormCriarEditarCompraPlaneada formCriarEditarCompraPlaneada = new FormCriarEditarCompraPlaneada();

@@ -14,6 +14,11 @@ namespace iShopping.Views
         private ArtigoController artigoController;
         private Compra compraAtual;
 
+        public FormModoCompra()
+        {
+            InitializeComponent();
+        }
+
         // 1. ALTERAÇÃO IMPORTANTE: O construtor tem de receber o ID da compra selecionada no Planeamento!
         public FormModoCompra(int compraId)
         {
@@ -90,9 +95,18 @@ namespace iShopping.Views
 
                 labelCompra.Text = "Compra: " + compraAtual.NomeCompra;
 
+                //listBoxItensCompra.DataSource = null;
+                //listBoxItensCompra.DataSource = compraAtual.ItensCompra.ToList();
+                //listBoxItensCompra.DisplayMember = "NomeArtigo"; // ajusta conforme o teu modelo
                 listBoxItensCompra.DataSource = null;
-                listBoxItensCompra.DataSource = compraAtual.ItensCompra.ToList();
-                listBoxItensCompra.DisplayMember = "NomeArtigo"; // ajusta conforme o teu modelo
+                if (compraAtual.ItensCompra != null)
+                {
+                    listBoxItensCompra.DataSource = compraAtual.ItensCompra.ToList();
+                }
+
+                // Não uses DisplayMember aqui.
+                // A ListBox vai usar o ToString() da classe ItemCompra.
+                listBoxItensCompra.ClearSelected();
 
                 AtualizarOrcamento();
             }

@@ -41,5 +41,6 @@ namespace iShopping.Model
         {
             return Artigo + " - Previsto: " + QuantidadePrevista + " / Adquirido: " + QuantidadeAdquirida;
         }
+
     }
 }
