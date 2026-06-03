@@ -43,8 +43,8 @@
             this.groupBoxAcessosRapidos = new System.Windows.Forms.GroupBox();
             this.buttonOrcamentos = new System.Windows.Forms.Button();
             this.buttonArtigos = new System.Windows.Forms.Button();
-            this.buttonCompraPlaneada = new System.Windows.Forms.Button();
-            this.buttonCompra = new System.Windows.Forms.Button();
+            this.buttonPlanearCompra = new System.Windows.Forms.Button();
+            this.buttonPlaneamentoCompras = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAcessosRapidos.SuspendLayout();
             this.SuspendLayout();
@@ -86,18 +86,19 @@
             this.utilizadoresToolStripMenuItem.Name = "utilizadoresToolStripMenuItem";
             this.utilizadoresToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.utilizadoresToolStripMenuItem.Text = "Utilizadores";
+            this.utilizadoresToolStripMenuItem.Click += new System.EventHandler(this.utilizadoresToolStripMenuItem_Click);
             // 
             // tipoDeArtigosToolStripMenuItem
             // 
             this.tipoDeArtigosToolStripMenuItem.Name = "tipoDeArtigosToolStripMenuItem";
-            this.tipoDeArtigosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.tipoDeArtigosToolStripMenuItem.Size = new System.Drawing.Size(237, 34);
             this.tipoDeArtigosToolStripMenuItem.Text = "Tipo de Artigos";
             this.tipoDeArtigosToolStripMenuItem.Click += new System.EventHandler(this.tipoDeArtigosToolStripMenuItem_Click);
             // 
             // orçamentosToolStripMenuItem
             // 
             this.orçamentosToolStripMenuItem.Name = "orçamentosToolStripMenuItem";
-            this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(237, 34);
             this.orçamentosToolStripMenuItem.Text = "Orçamentos";
             this.orçamentosToolStripMenuItem.Click += new System.EventHandler(this.orçamentosToolStripMenuItem_Click);
             // 
@@ -139,7 +140,7 @@
             // 
             this.listBoxComprasAbertas.FormattingEnabled = true;
             this.listBoxComprasAbertas.ItemHeight = 20;
-            this.listBoxComprasAbertas.Location = new System.Drawing.Point(18, 185);
+            this.listBoxComprasAbertas.Location = new System.Drawing.Point(18, 191);
             this.listBoxComprasAbertas.Name = "listBoxComprasAbertas";
             this.listBoxComprasAbertas.Size = new System.Drawing.Size(250, 224);
             this.listBoxComprasAbertas.TabIndex = 4;
@@ -159,8 +160,8 @@
             // 
             this.groupBoxAcessosRapidos.Controls.Add(this.buttonOrcamentos);
             this.groupBoxAcessosRapidos.Controls.Add(this.buttonArtigos);
-            this.groupBoxAcessosRapidos.Controls.Add(this.buttonCompraPlaneada);
-            this.groupBoxAcessosRapidos.Controls.Add(this.buttonCompra);
+            this.groupBoxAcessosRapidos.Controls.Add(this.buttonPlanearCompra);
+            this.groupBoxAcessosRapidos.Controls.Add(this.buttonPlaneamentoCompras);
             this.groupBoxAcessosRapidos.Location = new System.Drawing.Point(300, 185);
             this.groupBoxAcessosRapidos.Name = "groupBoxAcessosRapidos";
             this.groupBoxAcessosRapidos.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -191,27 +192,27 @@
             this.buttonArtigos.UseVisualStyleBackColor = true;
             this.buttonArtigos.Click += new System.EventHandler(this.buttonArtigos_Click);
             // 
-            // buttonCompraPlaneada
+            // buttonPlanearCompra
             // 
-            this.buttonCompraPlaneada.Location = new System.Drawing.Point(16, 98);
-            this.buttonCompraPlaneada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonCompraPlaneada.Name = "buttonCompraPlaneada";
-            this.buttonCompraPlaneada.Size = new System.Drawing.Size(160, 57);
-            this.buttonCompraPlaneada.TabIndex = 1;
-            this.buttonCompraPlaneada.Text = "Planear Compra";
-            this.buttonCompraPlaneada.UseVisualStyleBackColor = true;
-            this.buttonCompraPlaneada.Click += new System.EventHandler(this.buttonCompraPlaneada_Click);
+            this.buttonPlanearCompra.Location = new System.Drawing.Point(16, 98);
+            this.buttonPlanearCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonPlanearCompra.Name = "buttonPlanearCompra";
+            this.buttonPlanearCompra.Size = new System.Drawing.Size(160, 57);
+            this.buttonPlanearCompra.TabIndex = 1;
+            this.buttonPlanearCompra.Text = "Planear Compra";
+            this.buttonPlanearCompra.UseVisualStyleBackColor = true;
+            this.buttonPlanearCompra.Click += new System.EventHandler(this.buttonPlaneamentoCompras_Click);
             // 
-            // buttonCompra
+            // buttonPlaneamentoCompras
             // 
-            this.buttonCompra.Location = new System.Drawing.Point(16, 29);
-            this.buttonCompra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonCompra.Name = "buttonCompra";
-            this.buttonCompra.Size = new System.Drawing.Size(160, 60);
-            this.buttonCompra.TabIndex = 0;
-            this.buttonCompra.Text = "Planeamento Compras";
-            this.buttonCompra.UseVisualStyleBackColor = true;
-            this.buttonCompra.Click += new System.EventHandler(this.buttonCompra_Click);
+            this.buttonPlaneamentoCompras.Location = new System.Drawing.Point(16, 29);
+            this.buttonPlaneamentoCompras.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonPlaneamentoCompras.Name = "buttonPlaneamentoCompras";
+            this.buttonPlaneamentoCompras.Size = new System.Drawing.Size(160, 60);
+            this.buttonPlaneamentoCompras.TabIndex = 0;
+            this.buttonPlaneamentoCompras.Text = "Planeamento Compras";
+            this.buttonPlaneamentoCompras.UseVisualStyleBackColor = true;
+            this.buttonPlaneamentoCompras.Click += new System.EventHandler(this.buttonCompra_Click);
             // 
             // FormPrincipal
             // 
@@ -249,8 +250,8 @@
         private System.Windows.Forms.GroupBox groupBoxAcessosRapidos;
         private System.Windows.Forms.Button buttonOrcamentos;
         private System.Windows.Forms.Button buttonArtigos;
-        private System.Windows.Forms.Button buttonCompraPlaneada;
-        private System.Windows.Forms.Button buttonCompra;
+        private System.Windows.Forms.Button buttonPlanearCompra;
+        private System.Windows.Forms.Button buttonPlaneamentoCompras;
         private System.Windows.Forms.ToolStripMenuItem geralToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem utilizadoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDeArtigosToolStripMenuItem;

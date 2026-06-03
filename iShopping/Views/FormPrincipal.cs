@@ -30,15 +30,26 @@ namespace iShopping
         {
             try
             {
-                listBoxComprasAbertas.DataSource = null;
-                listBoxComprasAbertas.DataSource = _compraController.ObterComprasAbertas();
+                var comprasAbertas = _compraController.ObterComprasAbertas();
 
-                // Vai usar o ToString() que criaste na classe Compra
+                listBoxComprasAbertas.DataSource = null;
+
                 listBoxComprasAbertas.DisplayMember = "NomeCompra";
+                listBoxComprasAbertas.ValueMember = "Id";
+                listBoxComprasAbertas.DataSource = comprasAbertas;
+
+                listBoxComprasAbertas.ClearSelected();
+
+                labelComprasAbertas.Text = "Compras em Aberto (" + comprasAbertas.Count + ")";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Erro ao carregar compras em aberto: " + ex.Message,
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 
@@ -102,7 +113,7 @@ namespace iShopping
              CarregarComprasAbertas();
         }
 
-        private void buttonCompraPlaneada_Click(object sender, EventArgs e)
+        private void buttonPlaneamentoCompras_Click(object sender, EventArgs e)
         {
             // No design, este botão tem o texto "Compra Planeada"
             FormCriarEditarCompraPlaneada formCriarEditarCompraPlaneada = new FormCriarEditarCompraPlaneada();
@@ -120,6 +131,12 @@ namespace iShopping
         {
             FormGestaoOrcamentos formGestaoOrcamentos = new FormGestaoOrcamentos();
             formGestaoOrcamentos.ShowDialog();
+        }
+
+        private void utilizadoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormGestaoUtilizadores formGestaoUtilizadores = new FormGestaoUtilizadores();
+            formGestaoUtilizadores.ShowDialog();
         }
     }
 }

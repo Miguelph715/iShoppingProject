@@ -1,47 +1,57 @@
 ﻿using iShopping.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace iShopping.Controller
 {
     public class UtilizadorController
     {
-        // 1. Guardar o Id do Utilizador (Exigência do Enunciado)
-        // Usamos 'static' para que o valor se mantenha durante toda a execução da aplicação,
-        // independentemente do formulário onde estejas.
         public static int? UtilizadorLogadoId { get; private set; }
 
         public static string NomeUtilizadorLogado { get; private set; }
 
-        // 2. Método para Registar um Utilizador
-        // Retorna 'true' se sucesso, ou 'false' se falhar (e preenche a mensagem de erro)
+        public List<Utilizador> ObterTodos()
+        {
+            using (var db = new iShoppingContext())
+            {
+                return db.Utilizadores
+                    .OrderBy(u => u.Username)
+                    .ToList();
+            }
+        }
+
+        public Utilizador ObterPorId(int id)
+        {
+            using (var db = new iShoppingContext())
+            {
+                return db.Utilizadores
+                    .FirstOrDefault(u => u.Id == id);
+            }
+        }
+
         public bool RegistarUtilizador(string username, string password, out string mensagemErro)
         {
             mensagemErro = string.Empty;
 
-            // Instancia a ligação à base de dados
+            username = username.Trim();
+            password = password.Trim();
+
             using (var db = new iShoppingContext())
             {
-                // Verifica se já existe alguém com este Username na base de dados
                 bool utilizadorExiste = db.Utilizadores.Any(u => u.Username == username);
 
                 if (utilizadorExiste)
                 {
-                    mensagemErro = "Já existe um utilizador com esse Username. Por favor, escolha outro.";
+                    mensagemErro = "Já existe um utilizador com esse username.";
                     return false;
                 }
 
-                // Se não existir, cria o novo utilizador
-                var novoUtilizador = new Utilizador
+                Utilizador novoUtilizador = new Utilizador
                 {
                     Username = username,
-                    Password = password // (Numa app real a password deveria ser encriptada)
+                    Password = password
                 };
 
-                // Adiciona e guarda as alterações na Base de Dados
                 db.Utilizadores.Add(novoUtilizador);
                 db.SaveChanges();
 
@@ -49,29 +59,91 @@ namespace iShopping.Controller
             }
         }
 
-        // 3. Método para Efetuar o Login
-        public bool EfetuarLogin(string username, string password)
+        public bool AtualizarUtilizador(int id, string username, string password, out string mensagemErro)
         {
+            mensagemErro = string.Empty;
+
+            username = username.Trim();
+            password = password.Trim();
+
             using (var db = new iShoppingContext())
             {
-                // Procura na base de dados um utilizador que tenha este exato username e password
-                var utilizador = db.Utilizadores
-                                   .FirstOrDefault(u => u.Username == username && u.Password == password);
+                Utilizador utilizador = db.Utilizadores.FirstOrDefault(u => u.Id == id);
+
+                if (utilizador == null)
+                {
+                    mensagemErro = "Utilizador não encontrado.";
+                    return false;
+                }
+
+                bool usernameJaExisteNoutroUtilizador = db.Utilizadores.Any(u =>
+                    u.Id != id &&
+                    u.Username == username
+                );
+
+                if (usernameJaExisteNoutroUtilizador)
+                {
+                    mensagemErro = "Já existe outro utilizador com esse username.";
+                    return false;
+                }
+
+                utilizador.Username = username;
+                utilizador.Password = password;
+
+                db.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public bool EliminarUtilizador(int id, out string mensagemErro)
+        {
+            mensagemErro = string.Empty;
+
+            using (var db = new iShoppingContext())
+            {
+                Utilizador utilizador = db.Utilizadores.FirstOrDefault(u => u.Id == id);
+
+                if (utilizador == null)
+                {
+                    mensagemErro = "Utilizador não encontrado.";
+                    return false;
+                }
+
+                if (UtilizadorLogadoId.HasValue && UtilizadorLogadoId.Value == id)
+                {
+                    mensagemErro = "Não pode eliminar o utilizador que está atualmente autenticado.";
+                    return false;
+                }
+
+                db.Utilizadores.Remove(utilizador);
+                db.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public bool EfetuarLogin(string username, string password)
+        {
+            username = username.Trim();
+            password = password.Trim();
+
+            using (var db = new iShoppingContext())
+            {
+                Utilizador utilizador = db.Utilizadores
+                    .FirstOrDefault(u => u.Username == username && u.Password == password);
 
                 if (utilizador != null)
                 {
-                    // Sucesso! Guardamos o Id do utilizador na variável estática
                     UtilizadorLogadoId = utilizador.Id;
                     NomeUtilizadorLogado = utilizador.Username;
                     return true;
                 }
 
-                // Se o 'utilizador' for null, significa que as credenciais estão erradas
                 return false;
             }
         }
 
-        // Método extra para fazeres Logout mais tarde
         public void FazerLogout()
         {
             UtilizadorLogadoId = null;

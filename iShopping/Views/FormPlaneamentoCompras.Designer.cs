@@ -98,6 +98,7 @@
             this.buttonLimparCompras.TabIndex = 24;
             this.buttonLimparCompras.Text = "Limpar";
             this.buttonLimparCompras.UseVisualStyleBackColor = true;
+            this.buttonLimparCompras.Click += new System.EventHandler(this.buttonLimparCompras_Click);
             // 
             // FormPlaneamentoCompras
             // 
@@ -112,7 +113,7 @@
             this.Controls.Add(this.listBoxCompras);
             this.Controls.Add(this.comboBoxEstado);
             this.Name = "FormPlaneamentoCompras";
-            this.Text = "FormPlaneamentoCompras";
+            this.Text = "A";
             this.ResumeLayout(false);
             this.PerformLayout();
 
