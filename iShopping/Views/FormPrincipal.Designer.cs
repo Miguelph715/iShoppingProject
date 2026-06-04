@@ -45,6 +45,7 @@
             this.buttonArtigos = new System.Windows.Forms.Button();
             this.buttonPlanearCompra = new System.Windows.Forms.Button();
             this.buttonPlaneamentoCompras = new System.Windows.Forms.Button();
+            this.buttonExportarComprasFechadasCsv = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAcessosRapidos.SuspendLayout();
             this.SuspendLayout();
@@ -60,14 +61,14 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(810, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(815, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(57, 29);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(57, 32);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
@@ -78,7 +79,7 @@
             this.tipoDeArtigosToolStripMenuItem,
             this.orçamentosToolStripMenuItem});
             this.geralToolStripMenuItem.Name = "geralToolStripMenuItem";
-            this.geralToolStripMenuItem.Size = new System.Drawing.Size(83, 29);
+            this.geralToolStripMenuItem.Size = new System.Drawing.Size(83, 32);
             this.geralToolStripMenuItem.Text = "Gestão";
             // 
             // utilizadoresToolStripMenuItem
@@ -91,21 +92,21 @@
             // tipoDeArtigosToolStripMenuItem
             // 
             this.tipoDeArtigosToolStripMenuItem.Name = "tipoDeArtigosToolStripMenuItem";
-            this.tipoDeArtigosToolStripMenuItem.Size = new System.Drawing.Size(237, 34);
+            this.tipoDeArtigosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.tipoDeArtigosToolStripMenuItem.Text = "Tipo de Artigos";
             this.tipoDeArtigosToolStripMenuItem.Click += new System.EventHandler(this.tipoDeArtigosToolStripMenuItem_Click);
             // 
             // orçamentosToolStripMenuItem
             // 
             this.orçamentosToolStripMenuItem.Name = "orçamentosToolStripMenuItem";
-            this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(237, 34);
+            this.orçamentosToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.orçamentosToolStripMenuItem.Text = "Orçamentos";
             this.orçamentosToolStripMenuItem.Click += new System.EventHandler(this.orçamentosToolStripMenuItem_Click);
             // 
             // estatísticasToolStripMenuItem
             // 
             this.estatísticasToolStripMenuItem.Name = "estatísticasToolStripMenuItem";
-            this.estatísticasToolStripMenuItem.Size = new System.Drawing.Size(113, 29);
+            this.estatísticasToolStripMenuItem.Size = new System.Drawing.Size(113, 32);
             this.estatísticasToolStripMenuItem.Text = "Estatísticas";
             this.estatísticasToolStripMenuItem.Click += new System.EventHandler(this.estatísticasToolStripMenuItem_Click);
             // 
@@ -214,11 +215,22 @@
             this.buttonPlaneamentoCompras.UseVisualStyleBackColor = true;
             this.buttonPlaneamentoCompras.Click += new System.EventHandler(this.buttonCompra_Click);
             // 
+            // buttonExportarComprasFechadasCsv
+            // 
+            this.buttonExportarComprasFechadasCsv.Location = new System.Drawing.Point(18, 483);
+            this.buttonExportarComprasFechadasCsv.Name = "buttonExportarComprasFechadasCsv";
+            this.buttonExportarComprasFechadasCsv.Size = new System.Drawing.Size(250, 53);
+            this.buttonExportarComprasFechadasCsv.TabIndex = 7;
+            this.buttonExportarComprasFechadasCsv.Text = "Exportar Compras Fechadas para CSV";
+            this.buttonExportarComprasFechadasCsv.UseVisualStyleBackColor = true;
+            this.buttonExportarComprasFechadasCsv.Click += new System.EventHandler(this.buttonExportarComprasFechadasCsv_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 525);
+            this.ClientSize = new System.Drawing.Size(815, 548);
+            this.Controls.Add(this.buttonExportarComprasFechadasCsv);
             this.Controls.Add(this.groupBoxAcessosRapidos);
             this.Controls.Add(this.buttonAbrirModoCompra);
             this.Controls.Add(this.listBoxComprasAbertas);
@@ -256,6 +268,7 @@
         private System.Windows.Forms.ToolStripMenuItem utilizadoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDeArtigosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orçamentosToolStripMenuItem;
+        private System.Windows.Forms.Button buttonExportarComprasFechadasCsv;
     }
 }
 

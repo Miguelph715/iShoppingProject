@@ -218,5 +218,24 @@ namespace iShopping.Controller
                 throw new Exception("Erro ao obter compras em aberto: " + ex.Message);
             }
         }
+
+        public List<Compra> ObterComprasFechadasPorUtilizador(int utilizadorId)
+        {
+            try
+            {
+                using (var context = new iShoppingContext())
+                {
+                    return context.Compras
+                        .Include(c => c.ItensCompra.Select(i => i.Artigo))
+                        .Where(c => c.Fechada == true && c.CriadoPorId == utilizadorId)
+                        .OrderBy(c => c.DataFechada)
+                        .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao obter compras fechadas do utilizador: " + ex.Message);
+            }
+        }
     }
 }

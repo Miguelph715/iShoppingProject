@@ -2,6 +2,10 @@
 using iShopping.Model;
 using iShopping.Views;
 using System;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace iShopping
@@ -137,6 +141,139 @@ namespace iShopping
         {
             FormGestaoUtilizadores formGestaoUtilizadores = new FormGestaoUtilizadores();
             formGestaoUtilizadores.ShowDialog();
+        }
+
+        // ==========================================
+        // EXPORTAR COMPRAS FECHADAS PARA CSV
+        // ==========================================
+        private void buttonExportarComprasFechadasCsv_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!UtilizadorController.UtilizadorLogadoId.HasValue)
+                {
+                    MessageBox.Show(
+                        "Não existe nenhum utilizador logado.",
+                        "Aviso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+
+                int utilizadorId = UtilizadorController.UtilizadorLogadoId.Value;
+
+                var comprasFechadas = _compraController.ObterComprasFechadasPorUtilizador(utilizadorId);
+
+                if (comprasFechadas == null || comprasFechadas.Count == 0)
+                {
+                    MessageBox.Show(
+                        "Não existem compras fechadas para exportar.",
+                        "Informação",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                    return;
+                }
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Ficheiro CSV (*.csv)|*.csv";
+                    saveFileDialog.Title = "Exportar Compras Fechadas para CSV";
+                    saveFileDialog.FileName = "compras_fechadas_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".csv";
+
+                    if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+                    }
+
+                    StringBuilder csv = new StringBuilder();
+
+                    csv.AppendLine("NomeCompra;DataCriacao;DataFechada;NomeArtigo;ArtigoPrevisto;ArtigoNaoPrevisto;QuantidadePrevista;QuantidadeAdquirida;PrecoUnitario");
+
+                    foreach (var compra in comprasFechadas)
+                    {
+                        if (compra.ItensCompra == null || compra.ItensCompra.Count == 0)
+                        {
+                            csv.AppendLine(CriarLinhaCsv(
+                                compra.NomeCompra,
+                                compra.DataCriacao.ToString("dd/MM/yyyy HH:mm"),
+                                compra.DataFechada.HasValue ? compra.DataFechada.Value.ToString("dd/MM/yyyy HH:mm") : "",
+                                "",
+                                "Não",
+                                "Não",
+                                "0",
+                                "0",
+                                "0,00"
+                            ));
+
+                            continue;
+                        }
+
+                        foreach (var item in compra.ItensCompra)
+                        {
+                            string nomeArtigo = "";
+
+                            if (item.Artigo != null)
+                            {
+                                nomeArtigo = item.Artigo.Nome;
+                            }
+
+                            csv.AppendLine(CriarLinhaCsv(
+                                compra.NomeCompra,
+                                compra.DataCriacao.ToString("dd/MM/yyyy HH:mm"),
+                                compra.DataFechada.HasValue ? compra.DataFechada.Value.ToString("dd/MM/yyyy HH:mm") : "",
+                                nomeArtigo,
+                                item.ArtigoPrevisto ? "Sim" : "Não",
+                                item.ArtigoPrevisto ? "Não" : "Sim",
+                                item.QuantidadePrevista.ToString(),
+                                item.QuantidadeAdquirida.ToString(),
+                                item.PrecoUnitario.ToString("0.00", CultureInfo.GetCultureInfo("pt-PT"))
+                            ));
+                        }
+                    }
+
+                    File.WriteAllText(saveFileDialog.FileName, csv.ToString(), Encoding.UTF8);
+
+                    MessageBox.Show(
+                        "Compras fechadas exportadas com sucesso.",
+                        "Sucesso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Erro ao exportar compras fechadas: " + ex.Message,
+                    "Erro",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private string CriarLinhaCsv(params string[] campos)
+        {
+            return string.Join(";", campos.Select(PrepararCampoCsv));
+        }
+
+        private string PrepararCampoCsv(string valor)
+        {
+            if (valor == null)
+            {
+                return "";
+            }
+
+            valor = valor.Replace("\"", "\"\"");
+
+            if (valor.Contains(";") || valor.Contains("\"") || valor.Contains("\n") || valor.Contains("\r"))
+            {
+                return "\"" + valor + "\"";
+            }
+
+            return valor;
         }
     }
 }

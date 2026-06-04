@@ -36,7 +36,6 @@ namespace iShopping.Views
 
             dataGridViewUtilizadores.CellClick += dataGridViewUtilizadores_CellClick;
 
-            buttonNovo.Click += buttonNovo_Click;
             buttonGuardar.Click += buttonGuardar_Click;
             buttonEliminar.Click += buttonEliminar_Click;
             buttonLimpar.Click += buttonLimpar_Click;
@@ -69,11 +68,6 @@ namespace iShopping.Views
                     MessageBoxIcon.Error
                 );
             }
-        }
-
-        private void buttonNovo_Click(object sender, EventArgs e)
-        {
-            LimparCampos();
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -306,5 +300,6 @@ namespace iShopping.Views
 
             textBoxUsername.Focus();
         }
+
     }
 }

@@ -261,6 +261,5 @@ namespace iShopping.Views
             listBoxArtigos.ClearSelected();
             textBoxNomeArtigo.Focus();
         }
-
     }
 }

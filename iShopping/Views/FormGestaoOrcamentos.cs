@@ -178,8 +178,61 @@ namespace iShopping.Views
             }
         }
 
-
         private void buttonEliminarOrcamento_Click(object sender, EventArgs e)
+        {
+            if (listBoxOrcamentos.SelectedItem is Orcamento orcamentoSelecionado)
+            {
+                string nomeMes = new DateTime(orcamentoSelecionado.Ano, orcamentoSelecionado.Mes, 1)
+                    .ToString("MMMM", new CultureInfo("pt-PT"));
+
+                nomeMes = char.ToUpper(nomeMes[0]) + nomeMes.Substring(1);
+
+                DialogResult resposta = MessageBox.Show(
+                    $"Tem a certeza que deseja eliminar o orçamento de {nomeMes} de {orcamentoSelecionado.Ano}?",
+                    "Confirmar Eliminação",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (resposta == DialogResult.Yes)
+                {
+                    try
+                    {
+                        orcamentoController.Remover(orcamentoSelecionado.Id);
+
+                        MessageBox.Show(
+                            "Orçamento eliminado com sucesso!",
+                            "Sucesso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+
+                        AtualizarLista();
+                        LimparCampos();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Erro ao eliminar orçamento: " + ex.Message,
+                            "Erro",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Por favor, selecione um orçamento na lista para eliminar.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+        }
+
+        /*private void buttonEliminarOrcamento_Click(object sender, EventArgs e)
         {
             if (listBoxOrcamentos.SelectedItem is Orcamento orcamentoSelecionado)
             {
@@ -200,7 +253,7 @@ namespace iShopping.Views
             {
                 MessageBox.Show("Por favor, selecione um orçamento na lista para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
+        }*/
 
         private void buttonLimparOrcamento_Click(object sender, EventArgs e)
         {

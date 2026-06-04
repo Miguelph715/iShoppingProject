@@ -24,7 +24,6 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.buttonNovo = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonLimpar = new System.Windows.Forms.Button();
@@ -41,7 +40,7 @@
             this.labelTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.labelTitulo.Location = new System.Drawing.Point(20, 18);
             this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(255, 30);
+            this.labelTitulo.Size = new System.Drawing.Size(356, 45);
             this.labelTitulo.TabIndex = 0;
             this.labelTitulo.Text = "Gestão de Utilizadores";
             // 
@@ -63,7 +62,7 @@
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(120, 62);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(360, 23);
+            this.textBoxPassword.Size = new System.Drawing.Size(360, 31);
             this.textBoxPassword.TabIndex = 3;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
@@ -72,7 +71,7 @@
             this.labelPassword.AutoSize = true;
             this.labelPassword.Location = new System.Drawing.Point(22, 65);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(60, 15);
+            this.labelPassword.Size = new System.Drawing.Size(91, 25);
             this.labelPassword.TabIndex = 2;
             this.labelPassword.Text = "Password:";
             // 
@@ -80,7 +79,7 @@
             // 
             this.textBoxUsername.Location = new System.Drawing.Point(120, 30);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(360, 23);
+            this.textBoxUsername.Size = new System.Drawing.Size(360, 31);
             this.textBoxUsername.TabIndex = 1;
             // 
             // labelUsername
@@ -88,28 +87,18 @@
             this.labelUsername.AutoSize = true;
             this.labelUsername.Location = new System.Drawing.Point(22, 33);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(63, 15);
+            this.labelUsername.Size = new System.Drawing.Size(95, 25);
             this.labelUsername.TabIndex = 0;
             this.labelUsername.Text = "Username:";
-            // 
-            // buttonNovo
-            // 
-            this.buttonNovo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonNovo.Location = new System.Drawing.Point(570, 75);
-            this.buttonNovo.Name = "buttonNovo";
-            this.buttonNovo.Size = new System.Drawing.Size(120, 32);
-            this.buttonNovo.TabIndex = 2;
-            this.buttonNovo.Text = "Novo";
-            this.buttonNovo.UseVisualStyleBackColor = true;
             // 
             // buttonGuardar
             // 
             this.buttonGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.buttonGuardar.Location = new System.Drawing.Point(710, 75);
+            this.buttonGuardar.Location = new System.Drawing.Point(570, 65);
             this.buttonGuardar.Name = "buttonGuardar";
-            this.buttonGuardar.Size = new System.Drawing.Size(120, 32);
+            this.buttonGuardar.Size = new System.Drawing.Size(260, 42);
             this.buttonGuardar.TabIndex = 3;
-            this.buttonGuardar.Text = "Guardar";
+            this.buttonGuardar.Text = "Guardar Dados";
             this.buttonGuardar.UseVisualStyleBackColor = true;
             // 
             // buttonEliminar
@@ -117,7 +106,7 @@
             this.buttonEliminar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.buttonEliminar.Location = new System.Drawing.Point(570, 125);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(120, 32);
+            this.buttonEliminar.Size = new System.Drawing.Size(120, 45);
             this.buttonEliminar.TabIndex = 4;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
@@ -125,9 +114,9 @@
             // buttonLimpar
             // 
             this.buttonLimpar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonLimpar.Location = new System.Drawing.Point(710, 125);
+            this.buttonLimpar.Location = new System.Drawing.Point(708, 125);
             this.buttonLimpar.Name = "buttonLimpar";
-            this.buttonLimpar.Size = new System.Drawing.Size(120, 32);
+            this.buttonLimpar.Size = new System.Drawing.Size(122, 45);
             this.buttonLimpar.TabIndex = 5;
             this.buttonLimpar.Text = "Limpar";
             this.buttonLimpar.UseVisualStyleBackColor = true;
@@ -155,13 +144,14 @@
             this.dataGridViewUtilizadores.Name = "dataGridViewUtilizadores";
             this.dataGridViewUtilizadores.ReadOnly = true;
             this.dataGridViewUtilizadores.RowHeadersVisible = false;
+            this.dataGridViewUtilizadores.RowHeadersWidth = 62;
             this.dataGridViewUtilizadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUtilizadores.Size = new System.Drawing.Size(775, 245);
             this.dataGridViewUtilizadores.TabIndex = 0;
             // 
             // FormGestaoUtilizadores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(854, 501);
@@ -169,7 +159,6 @@
             this.Controls.Add(this.buttonLimpar);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonGuardar);
-            this.Controls.Add(this.buttonNovo);
             this.Controls.Add(this.groupBoxDados);
             this.Controls.Add(this.labelTitulo);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -184,6 +173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUtilizadores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -194,7 +184,6 @@
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.Button buttonNovo;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonLimpar;
