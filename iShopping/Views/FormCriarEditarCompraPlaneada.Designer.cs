@@ -110,7 +110,7 @@
             this.buttonEditarItem.TabIndex = 7;
             this.buttonEditarItem.Text = "Editar Item";
             this.buttonEditarItem.UseVisualStyleBackColor = true;
-            this.buttonEditarItem.Click += new System.EventHandler(this.FormCriarEditarCompraPlaneada_Load);
+            this.buttonEditarItem.Click += new System.EventHandler(this.buttonEditarItem_Click);
             // 
             // buttonEliminarItem
             // 
@@ -130,7 +130,8 @@
             this.buttonLimpar.TabIndex = 9;
             this.buttonLimpar.Text = "Limpar";
             this.buttonLimpar.UseVisualStyleBackColor = true;
-            // 
+            this.buttonLimpar.Click += new System.EventHandler(this.buttonLimpar_Click);
+            //
             // buttonGuardarCompra
             // 
             this.buttonGuardarCompra.Location = new System.Drawing.Point(47, 565);
@@ -149,7 +150,8 @@
             this.buttonVoltar.TabIndex = 11;
             this.buttonVoltar.Text = "Voltar";
             this.buttonVoltar.UseVisualStyleBackColor = true;
-            // 
+            this.buttonVoltar.Click += new System.EventHandler(this.buttonVoltar_Click);
+            //
             // listBoxItensCompra
             // 
             this.listBoxItensCompra.FormattingEnabled = true;
@@ -213,7 +215,7 @@
             this.Controls.Add(this.labelNomeCompra);
             this.Name = "FormCriarEditarCompraPlaneada";
             this.Text = "FormCriarEditarCompraPlaneada";
-            this.Activated += new System.EventHandler(this.FormCriarEditarCompraPlaneada_Load);
+            this.Load += new System.EventHandler(this.FormCriarEditarCompraPlaneada_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantidadePrevista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -83,7 +83,9 @@ namespace iShopping.Controller
             {
                 using (var context = new iShoppingContext())
                 {
-                    var compraExistente = context.Compras.Find(compra.Id);
+                    var compraExistente = context.Compras
+                        .Include(c => c.ItensCompra)
+                        .FirstOrDefault(c => c.Id == compra.Id);
 
                     if (compraExistente == null)
                         throw new Exception("A compra que tenta alterar não foi encontrada.");
@@ -93,7 +95,36 @@ namespace iShopping.Controller
                         throw new Exception("Operação Inválida! Não é possível alterar uma compra que já se encontra fechada.");
 
                     // Atualiza os valores do cabeçalho
-                    context.Entry(compraExistente).CurrentValues.SetValues(compra);
+                    compraExistente.NomeCompra = compra.NomeCompra;
+                    compraExistente.DataAlteracao = compra.DataAlteracao;
+                    compraExistente.AlteradoPorId = compra.AlteradoPorId;
+
+                    if (compra.ItensCompra != null)
+                    {
+                        // Remove itens que foram eliminados na edição
+                        var itensParaRemover = compraExistente.ItensCompra
+                            .Where(e => !compra.ItensCompra.Any(n => n.Id == e.Id))
+                            .ToList();
+                        foreach (var item in itensParaRemover)
+                            context.ItensCompra.Remove(item);
+
+                        // Atualiza quantidade dos itens existentes
+                        foreach (var itemEditado in compra.ItensCompra.Where(i => i.Id > 0))
+                        {
+                            var itemExistente = compraExistente.ItensCompra.FirstOrDefault(i => i.Id == itemEditado.Id);
+                            if (itemExistente != null)
+                                itemExistente.QuantidadePrevista = itemEditado.QuantidadePrevista;
+                        }
+
+                        // Adiciona novos itens (Id == 0 significa que foram criados nesta sessão de edição)
+                        foreach (var novoItem in compra.ItensCompra.Where(i => i.Id == 0))
+                        {
+                            novoItem.CompraId = compra.Id;
+                            novoItem.Artigo = null; // evita duplicação de Artigo pelo EF
+                            compraExistente.ItensCompra.Add(novoItem);
+                        }
+                    }
+
                     context.SaveChanges();
                 }
             }

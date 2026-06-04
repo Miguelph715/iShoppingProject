@@ -100,6 +100,10 @@ namespace iShopping.Controller
                     if (artigo == null)
                         throw new Exception("Artigo não encontrado.");
 
+                    bool usadoEmCompra = context.ItensCompra.Any(i => i.ArtigoId == id);
+                    if (usadoEmCompra)
+                        throw new Exception("Não é possível eliminar este artigo porque está associado a uma ou mais compras.");
+
                     context.Artigos.Remove(artigo);
                     context.SaveChanges();
                 }

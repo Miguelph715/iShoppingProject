@@ -3,6 +3,7 @@ using iShopping.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace iShopping.Views
 {
@@ -38,7 +39,10 @@ namespace iShopping.Views
             {
                 List<TipoArtigo> tipos = tipoArtigoController.ObterTodos();
 
-                comboBoxTipoArtigo.DataSource = new List<TipoArtigo>(tipos);
+                // Usar BindingSource separado para cada ComboBox evita que o WinForms
+                // sincronize as seleções de ambos via CurrencyManager partilhado.
+                var bsTipoArtigo = new BindingSource { DataSource = new List<TipoArtigo>(tipos) };
+                comboBoxTipoArtigo.DataSource = bsTipoArtigo;
                 comboBoxTipoArtigo.DisplayMember = "Nome";
                 comboBoxTipoArtigo.ValueMember = "Id";
 
@@ -46,7 +50,8 @@ namespace iShopping.Views
                 tiposFiltro.Add(new TipoArtigo { Id = 0, Nome = "Todos" });
                 tiposFiltro.AddRange(tipos);
 
-                comboBoxFiltroTipo.DataSource = tiposFiltro;
+                var bsFiltroTipo = new BindingSource { DataSource = tiposFiltro };
+                comboBoxFiltroTipo.DataSource = bsFiltroTipo;
                 comboBoxFiltroTipo.DisplayMember = "Nome";
                 comboBoxFiltroTipo.ValueMember = "Id";
             }

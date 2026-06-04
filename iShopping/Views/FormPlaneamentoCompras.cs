@@ -102,6 +102,7 @@ namespace iShopping.Views
         {
             comboBoxEstado.SelectedItem = "Em aberto";
             listBoxCompras.ClearSelected();
+            CarregarCompras();
         }
 
         private void buttonNovaCompra_Click(object sender, EventArgs e)
@@ -128,19 +129,11 @@ namespace iShopping.Views
 
             Compra compraSelecionada = (Compra)listBoxCompras.SelectedItem;
 
-            MessageBox.Show(
-                "Compra selecionada: " + compraSelecionada.NomeCompra,
-                "Informação",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            Compra compraCompleta = _compraController.ObterPorId(compraSelecionada.Id);
 
-            // Quando tiveres o formulário de edição preparado,
-            // aqui podes abrir a compra pelo ID:
-            //
-            // FormCriarEditarCompraPlaneada form = new FormCriarEditarCompraPlaneada(compraSelecionada.Id);
-            // form.ShowDialog();
-            // CarregarCompras();
+            FormCriarEditarCompraPlaneada form = new FormCriarEditarCompraPlaneada(compraCompleta);
+            form.ShowDialog();
+            CarregarCompras();
         }
     }
 }

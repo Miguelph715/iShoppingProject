@@ -100,7 +100,6 @@ namespace iShopping.Views
             ItemCompra novoItem = new ItemCompra
             {
                 ArtigoId = artigoSelecionado.Id,
-                Artigo = artigoSelecionado,
                 ArtigoPrevisto = true, // Como estamos a planear, é sempre previsto
                 QuantidadePrevista = quantidade,
                 QuantidadeAdquirida = 0,
@@ -123,6 +122,38 @@ namespace iShopping.Views
                 itensCompra.Remove(itemSelecionado);
                 AtualizarListaItensCompra();
             }
+        }
+
+        private void buttonEditarItem_Click(object sender, EventArgs e)
+        {
+            if (listBoxItensCompra.SelectedItem == null)
+            {
+                MessageBox.Show("Selecione um item da lista para editar.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (numericQuantidadePrevista.Value <= 0)
+            {
+                MessageBox.Show("Indique uma quantidade superior a zero.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ItemCompra itemSelecionado = (ItemCompra)listBoxItensCompra.SelectedItem;
+            itemSelecionado.QuantidadePrevista = (int)numericQuantidadePrevista.Value;
+            AtualizarListaItensCompra();
+            LimparCamposItem();
+        }
+
+        private void buttonLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCamposItem();
+        }
+
+        private void buttonVoltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
