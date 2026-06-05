@@ -43,7 +43,7 @@
             // 
             this.textBoxValor.Location = new System.Drawing.Point(95, 93);
             this.textBoxValor.Name = "textBoxValor";
-            this.textBoxValor.Size = new System.Drawing.Size(148, 26);
+            this.textBoxValor.Size = new System.Drawing.Size(185, 26);
             this.textBoxValor.TabIndex = 2;
             // 
             // listBoxOrcamentos
@@ -88,9 +88,6 @@
             this.buttonEliminarOrcamento.BackgroundImageLayoutChanged += new System.EventHandler(this.buttonEliminarOrcamento_Click);
             this.buttonEliminarOrcamento.Click += new System.EventHandler(this.buttonEliminarOrcamento_Click);
             // 
-            // labelMes
-            // 
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -111,7 +108,7 @@
             // 
             // buttonLimparOrcamento
             // 
-            this.buttonLimparOrcamento.Location = new System.Drawing.Point(260, 41);
+            this.buttonLimparOrcamento.Location = new System.Drawing.Point(299, 41);
             this.buttonLimparOrcamento.Name = "buttonLimparOrcamento";
             this.buttonLimparOrcamento.Size = new System.Drawing.Size(106, 63);
             this.buttonLimparOrcamento.TabIndex = 23;
@@ -123,7 +120,7 @@
             // 
             this.dateTimePickerDataOrcamento.Location = new System.Drawing.Point(43, 41);
             this.dateTimePickerDataOrcamento.Name = "dateTimePickerDataOrcamento";
-            this.dateTimePickerDataOrcamento.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePickerDataOrcamento.Size = new System.Drawing.Size(237, 26);
             this.dateTimePickerDataOrcamento.TabIndex = 24;
             // 
             // FormGestaoOrcamentos

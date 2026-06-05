@@ -100,7 +100,7 @@ namespace iShopping.Views
 
         private void buttonLimparCompras_Click(object sender, EventArgs e)
         {
-            comboBoxEstado.SelectedItem = "Em aberto";
+            comboBoxEstado.SelectedItem = "Todas";
             listBoxCompras.ClearSelected();
             CarregarCompras();
         }

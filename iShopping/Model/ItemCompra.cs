@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace iShopping.Model
 
         public int ArtigoId { get; set; }
         public virtual Artigo Artigo { get; set; }
+
+        [NotMapped]
+        public string NomeArtigoParaMostrar { get; set; }
 
         public bool ArtigoPrevisto { get; set; }
 
@@ -37,9 +41,25 @@ namespace iShopping.Model
 
         public DateTime? DataAlteracao { get; set; }
 
-        public override string ToString()
+        /*public override string ToString()
         {
             return Artigo + " - Previsto: " + QuantidadePrevista + " / Adquirido: " + QuantidadeAdquirida;
+        }*/
+
+        public override string ToString()
+        {
+            string nomeArtigo = "Artigo não definido";
+
+            if (!string.IsNullOrWhiteSpace(NomeArtigoParaMostrar))
+            {
+                nomeArtigo = NomeArtigoParaMostrar;
+            }
+            else if (Artigo != null)
+            {
+                nomeArtigo = Artigo.Nome;
+            }
+
+            return nomeArtigo + " - Previsto: " + QuantidadePrevista + " / Adquirido: " + QuantidadeAdquirida;
         }
 
     }

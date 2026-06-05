@@ -260,10 +260,15 @@ namespace iShopping.Views
         {
             textBoxNomeArtigo.Clear();
 
-            // Deixa a ComboBox "Tipo de Artigo" vazia
+            // Limpa a ComboBox "Tipo de Artigo"
             comboBoxTipoArtigo.SelectedIndex = -1;
+
+            // Volta o filtro para "Todos", se existir essa opção
+            comboBoxFiltroTipo.SelectedIndex = 0;
+
             // Remove seleção da ListBox
             listBoxArtigos.ClearSelected();
+
             textBoxNomeArtigo.Focus();
         }
     }

@@ -100,6 +100,7 @@ namespace iShopping.Views
             ItemCompra novoItem = new ItemCompra
             {
                 ArtigoId = artigoSelecionado.Id,
+                NomeArtigoParaMostrar = artigoSelecionado.Nome,
                 ArtigoPrevisto = true, // Como estamos a planear, é sempre previsto
                 QuantidadePrevista = quantidade,
                 QuantidadeAdquirida = 0,
@@ -114,13 +115,49 @@ namespace iShopping.Views
             LimparCamposItem();
         }
 
-        private void buttonRemoverItem_Click(object sender, EventArgs e)
+        /*private void buttonEliminarItem_Click(object sender, EventArgs e)
         {
             if (listBoxItensCompra.SelectedItem != null)
             {
                 ItemCompra itemSelecionado = (ItemCompra)listBoxItensCompra.SelectedItem;
                 itensCompra.Remove(itemSelecionado);
                 AtualizarListaItensCompra();
+            }
+        }*/
+        private void buttonRemoverItem_Click(object sender, EventArgs e)
+        {
+            if (listBoxItensCompra.SelectedItem == null)
+            {
+                MessageBox.Show(
+                    "Selecione um item da compra para eliminar.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            ItemCompra itemSelecionado = (ItemCompra)listBoxItensCompra.SelectedItem;
+
+            DialogResult resposta = MessageBox.Show(
+                "Tem a certeza que pretende eliminar este item da compra?",
+                "Confirmar eliminação",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resposta == DialogResult.Yes)
+            {
+                itensCompra.Remove(itemSelecionado);
+                AtualizarListaItensCompra();
+                LimparCamposItem();
+
+                MessageBox.Show(
+                    "Item eliminado com sucesso.",
+                    "Sucesso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
             }
         }
 
@@ -206,7 +243,7 @@ namespace iShopping.Views
             comboBoxTipoArtigo.DisplayMember = "Nome";
             comboBoxTipoArtigo.ValueMember = "Id";
             comboBoxTipoArtigo.SelectedIndex = -1;
-        }
+        } 
 
         private void AtualizarListaArtigos()
         {
@@ -254,5 +291,6 @@ namespace iShopping.Views
             buttonEditarItem.Enabled = false;
             buttonGuardarCompra.Enabled = false;
         }
+
     }
 }
