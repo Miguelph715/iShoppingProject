@@ -58,7 +58,10 @@ namespace iShopping.Model
             {
                 nomeArtigo = Artigo.Nome;
             }
-
+            else
+            {
+                nomeArtigo = $"Artigo #{ArtigoId}";
+            }
             return nomeArtigo + " - Previsto: " + QuantidadePrevista + " / Adquirido: " + QuantidadeAdquirida;
         }
 

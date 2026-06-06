@@ -15,22 +15,19 @@ namespace iShopping.Views
 
         private List<ItemCompra> itensCompra = new List<ItemCompra>();
 
-        // Variável para sabermos se estamos a editar uma compra existente
         private Compra compraAtual;
 
         // ==========================================
         // CONSTRUTORES
         // ==========================================
 
-        // Construtor 1: Usado para CRIAR uma NOVA Compra
         public FormCriarEditarCompraPlaneada()
         {
             InitializeComponent();
             InicializarControladores();
-            compraAtual = new Compra(); // Prepara uma compra vazia
+            compraAtual = new Compra();
         }
 
-        // Construtor 2: Usado para EDITAR uma Compra EXISTENTE
         public FormCriarEditarCompraPlaneada(Compra compraParaEditar)
         {
             InitializeComponent();
@@ -53,22 +50,35 @@ namespace iShopping.Views
         {
             CarregarTiposArtigo();
 
-            // Se for modo Edição, preencher os campos com os dados da Compra
+            // Se for modo Edição, recarregar a compra da BD com Include dos Artigos
             if (compraAtual.Id > 0)
             {
-                textBoxNomeCompra.Text = compraAtual.NomeCompra;
+                // CORREÇÃO: Recarrega da BD para garantir que Artigo está preenchido
+                Compra compraCompleta = compraController.ObterPorId(compraAtual.Id);
 
-                if (compraAtual.ItensCompra != null)
+                if (compraCompleta != null)
                 {
-                    itensCompra = compraAtual.ItensCompra.ToList();
-                    AtualizarListaItensCompra();
+                    compraAtual = compraCompleta;
+                    textBoxNomeCompra.Text = compraAtual.NomeCompra;
+
+                    if (compraAtual.ItensCompra != null)
+                    {
+                        itensCompra = compraAtual.ItensCompra.ToList();
+                        AtualizarListaItensCompra();
+                    }
+
+                    if (compraAtual.Fechada)
+                    {
+                        DesativarModoEdicao();
+                        MessageBox.Show("Esta compra já está fechada. Apenas pode visualizar os dados.",
+                            "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-
-                
-                if (compraAtual.Fechada)
+                else
                 {
-                    DesativarModoEdicao();
-                    MessageBox.Show("Esta compra já está fechada. Apenas pode visualizar os dados.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Não foi possível carregar os dados da compra.",
+                        "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
                 }
             }
         }
@@ -82,26 +92,27 @@ namespace iShopping.Views
         {
             if (comboBoxArtigo.SelectedItem == null || numericQuantidadePrevista.Value <= 0)
             {
-                MessageBox.Show("Selecione um artigo válido e indique uma quantidade superior a zero.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecione um artigo válido e indique uma quantidade superior a zero.",
+                    "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             Artigo artigoSelecionado = (Artigo)comboBoxArtigo.SelectedItem;
             int quantidade = (int)numericQuantidadePrevista.Value;
 
-            // Evitar adicionar artigos repetidos
             if (itensCompra.Any(i => i.ArtigoId == artigoSelecionado.Id))
             {
-                MessageBox.Show("Este artigo já foi adicionado à compra.", "Artigo repetido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Este artigo já foi adicionado à compra.",
+                    "Artigo repetido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-           
             ItemCompra novoItem = new ItemCompra
             {
                 ArtigoId = artigoSelecionado.Id,
+                Artigo = artigoSelecionado, // IMPORTANTE: Guarda também a referência do objeto
                 NomeArtigoParaMostrar = artigoSelecionado.Nome,
-                ArtigoPrevisto = true, // Como estamos a planear, é sempre previsto
+                ArtigoPrevisto = true,
                 QuantidadePrevista = quantidade,
                 QuantidadeAdquirida = 0,
                 PrecoUnitario = 0,
@@ -115,25 +126,12 @@ namespace iShopping.Views
             LimparCamposItem();
         }
 
-        /*private void buttonEliminarItem_Click(object sender, EventArgs e)
-        {
-            if (listBoxItensCompra.SelectedItem != null)
-            {
-                ItemCompra itemSelecionado = (ItemCompra)listBoxItensCompra.SelectedItem;
-                itensCompra.Remove(itemSelecionado);
-                AtualizarListaItensCompra();
-            }
-        }*/
         private void buttonRemoverItem_Click(object sender, EventArgs e)
         {
             if (listBoxItensCompra.SelectedItem == null)
             {
-                MessageBox.Show(
-                    "Selecione um item da compra para eliminar.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+                MessageBox.Show("Selecione um item da compra para eliminar.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -143,8 +141,7 @@ namespace iShopping.Views
                 "Tem a certeza que pretende eliminar este item da compra?",
                 "Confirmar eliminação",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
+                MessageBoxIcon.Question);
 
             if (resposta == DialogResult.Yes)
             {
@@ -152,12 +149,8 @@ namespace iShopping.Views
                 AtualizarListaItensCompra();
                 LimparCamposItem();
 
-                MessageBox.Show(
-                    "Item eliminado com sucesso.",
-                    "Sucesso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                MessageBox.Show("Item eliminado com sucesso.",
+                    "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -165,15 +158,15 @@ namespace iShopping.Views
         {
             if (listBoxItensCompra.SelectedItem == null)
             {
-                MessageBox.Show("Selecione um item da lista para editar.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecione um item da lista para editar.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (numericQuantidadePrevista.Value <= 0)
             {
-                MessageBox.Show("Indique uma quantidade superior a zero.", "Aviso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Indique uma quantidade superior a zero.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -203,11 +196,10 @@ namespace iShopping.Views
                     return;
                 }
 
-                
                 compraAtual.NomeCompra = textBoxNomeCompra.Text;
                 compraAtual.ItensCompra = itensCompra;
 
-                if (compraAtual.Id == 0) // Modo CRIAR NOVO
+                if (compraAtual.Id == 0)
                 {
                     compraAtual.DataCriacao = DateTime.Now;
                     compraAtual.Fechada = false;
@@ -216,7 +208,7 @@ namespace iShopping.Views
                     compraController.Adicionar(compraAtual);
                     MessageBox.Show("Compra planeada com sucesso!");
                 }
-                else // Modo EDITAR EXISTENTE
+                else
                 {
                     compraAtual.DataAlteracao = DateTime.Now;
                     compraAtual.AlteradoPorId = UtilizadorController.UtilizadorLogadoId.Value;
@@ -225,7 +217,7 @@ namespace iShopping.Views
                     MessageBox.Show("Compra atualizada com sucesso!");
                 }
 
-                this.Close(); // Fecha a janela após guardar
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -234,7 +226,7 @@ namespace iShopping.Views
         }
 
         // ==========================================
-        // FUNÇÕES SEPARADAS (MÉTODOS DE APOIO)
+        // FUNÇÕES DE APOIO
         // ==========================================
 
         private void CarregarTiposArtigo()
@@ -243,7 +235,7 @@ namespace iShopping.Views
             comboBoxTipoArtigo.DisplayMember = "Nome";
             comboBoxTipoArtigo.ValueMember = "Id";
             comboBoxTipoArtigo.SelectedIndex = -1;
-        } 
+        }
 
         private void AtualizarListaArtigos()
         {
@@ -251,9 +243,7 @@ namespace iShopping.Views
             {
                 TipoArtigo tipoSelecionado = (TipoArtigo)comboBoxTipoArtigo.SelectedItem;
 
-                var artigosFiltrados = artigoController.ObterTodos()
-                                        .Where(a => a.TipoArtigoId == tipoSelecionado.Id)
-                                        .ToList();
+                var artigosFiltrados = artigoController.ObterPorTipo(tipoSelecionado.Id);
 
                 comboBoxArtigo.DataSource = null;
                 comboBoxArtigo.DataSource = artigosFiltrados;
@@ -282,7 +272,6 @@ namespace iShopping.Views
 
         private void DesativarModoEdicao()
         {
-            
             textBoxNomeCompra.Enabled = false;
             comboBoxTipoArtigo.Enabled = false;
             comboBoxArtigo.Enabled = false;
@@ -291,6 +280,5 @@ namespace iShopping.Views
             buttonEditarItem.Enabled = false;
             buttonGuardarCompra.Enabled = false;
         }
-
     }
 }

@@ -64,6 +64,15 @@ namespace iShopping.Controller
             {
                 using (var context = new iShoppingContext())
                 {
+                    // CORREÇÃO: Limpar a referência do objeto Artigo para o EF não criar clones na BD!
+                    if (compra.ItensCompra != null)
+                    {
+                        foreach (var item in compra.ItensCompra)
+                        {
+                            item.Artigo = null;
+                        }
+                    }
+
                     context.Compras.Add(compra);
                     context.SaveChanges();
                 }
