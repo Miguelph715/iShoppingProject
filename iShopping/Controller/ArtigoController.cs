@@ -64,7 +64,41 @@ namespace iShopping.Controller
             }
         }
 
-        public void Atualizar(Artigo artigo)
+        public void Atualizar(int id, string nome, int tipoArtigoId)
+        {
+            try
+            {
+                using (var context = new iShoppingContext())
+                {
+                    nome = nome.Trim();
+
+                    // Verifica nome duplicado dentro do mesmo tipo, excluindo o próprio artigo
+                    bool jaExiste = context.Artigos
+                        .Any(a => a.Nome.ToLower() == nome.ToLower()
+                               && a.TipoArtigoId == tipoArtigoId
+                               && a.Id != id);
+
+                    if (jaExiste)
+                        throw new Exception("Já existe um Artigo com esse nome neste Tipo de Artigo.");
+
+                    Artigo artigoBD = context.Artigos.Find(id);
+
+                    if (artigoBD == null)
+                        throw new Exception("Artigo não encontrado.");
+
+                    artigoBD.Nome = nome;
+                    artigoBD.TipoArtigoId = tipoArtigoId;
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao atualizar Artigo: " + ex.Message);
+            }
+        }
+
+        /*public void Atualizar(Artigo artigo)
         {
             try
             {
@@ -87,7 +121,7 @@ namespace iShopping.Controller
             {
                 throw new Exception("Erro ao atualizar Artigo: " + ex.Message);
             }
-        }
+        }*/
 
         public void Remover(int id)
         {

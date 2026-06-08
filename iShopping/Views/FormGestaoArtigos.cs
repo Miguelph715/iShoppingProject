@@ -182,6 +182,7 @@ namespace iShopping.Views
             }
         }
 
+        /*   CÓDIGO DO BUTTON EDITAR MAS TÁ A DAR ERRO A EDITAR O TIPO DE ARTIGO
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxNomeArtigo.Text))
@@ -216,8 +217,50 @@ namespace iShopping.Views
                 MessageBox.Show("Por favor, selecione um Artigo na lista para editar.", "Aviso",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
+        }*/
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (!(listBoxArtigos.SelectedItem is Artigo artigoSelecionado))
+            {
+                MessageBox.Show("Por favor, selecione um Artigo na lista para editar.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxNomeArtigo.Text))
+            {
+                MessageBox.Show("O nome não pode estar vazio.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (comboBoxTipoArtigo.SelectedValue == null)
+            {
+                MessageBox.Show("Selecione um Tipo de Artigo.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                int id = artigoSelecionado.Id;
+                string nome = textBoxNomeArtigo.Text.Trim();
+                int tipoArtigoId = Convert.ToInt32(comboBoxTipoArtigo.SelectedValue);
+
+                artigoController.Atualizar(id, nome, tipoArtigoId);
+
+                MessageBox.Show("Artigo atualizado com sucesso!", "Sucesso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                AtualizarLista();
+                LimparCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (listBoxArtigos.SelectedItem is Artigo artigoSelecionado)
